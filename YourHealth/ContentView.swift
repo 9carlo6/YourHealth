@@ -11,23 +11,51 @@ struct ContentView: View {
     var body: some View{
         
         ZStack{
-            NavigationView{
-                Form{
-                    Section{
-                        Text("Hello World")
+            TabView{
+                NavigationView{
+                    Form{
+                        Section{
+                            Text("Hello World")
+                        }
                     }
+                    .navigationBarTitle(Text("Dashboard"))
+                    .navigationBarItems(trailing:
+                        HStack {
+                            Button(action: {
+                                print("ciao")
+                            }, label:{
+                                Image(systemName: "trash")
+                            })
+                        }
+                    )
                 }
-                .navigationBarTitle(Text("Dashboard"))
-                .navigationBarItems(trailing:
-                    HStack {
-                        Button(action: {
-                            print("ciao")
-                        }, label:{
-                            Image(systemName: "trash")
-                        })
+                .tabItem {
+                    Image(systemName: "doc.circle.fill")
+                    Text("Dashboard")
+                }
+                
+                Text("schedule")
+                    .tabItem {
+                        Image(systemName: "calendar.circle.fill")
+                        Text("Schedule")
                     }
-                )
+                Text("chats")
+                    .tabItem {
+                        Image(systemName: "message.circle.fill")
+                        Text("Chats")
+                    }
+                Text("specialist")
+                    .tabItem {
+                        Image(systemName: "asterisk.circle.fill")
+                        Text("Specialist")
+                    }
+                Text("settings")
+                    .tabItem {
+                        Image(systemName: "gearshape.fill")
+                        Text("Settings")
+                    }
             }
+            
         }.background(Color.black.opacity(0.5))
     }
 }
