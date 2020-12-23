@@ -8,9 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, worldoo!")
-            .padding()
+    var body: some View{
+        
+        ZStack{
+            NavigationView{
+                Form{
+                    Section{
+                        Text("Hello World")
+                    }
+                }
+                .navigationBarTitle(Text("Dashboard"))
+                .navigationBarItems(trailing:
+                    HStack {
+                        Button(action: {
+                            print("ciao")
+                        }, label:{
+                            Image(systemName: "trash")
+                        })
+                    }
+                )
+            }
+        }.background(Color.black.opacity(0.5))
     }
 }
 
