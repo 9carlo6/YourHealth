@@ -11,7 +11,9 @@ import SwiftUI
 
 struct ContentView: View {
     
+    //colore per la tab view
     @State var tabColor: UIColor = UIColor.init(red: 255/255, green: 226/255, blue: 226/255,alpha: 0.0)
+    //colore per la navigation view
     @State var navColor: Color = Color.init(red: 255/255, green: 240/255, blue: 240/255)
     
     
@@ -19,47 +21,39 @@ struct ContentView: View {
 
         ZStack{
             TabView{
+                //questo è quello che si vede all'interno
+                //della navigation view Dashboard
                 NavigationView{
                     ZStack{
                         navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                         Text("Dashboard")
-                            .navigationBarTitle(Text("Dashboard"))
-                            .navigationBarItems(trailing:
-                                HStack {
-                                    Button(action: {
-                                        print("ciao")
-                                    }, label:{
-                                        Image(systemName: "trash")
-                                    })
-                                }
+                            .navigationBarTitle(
+                                Text("Dashboard")
+                                    .font(.largeTitle)
+                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                             )
                     }
                 }
-                .tabItem {
+                .tabItem() {
                     Image(systemName: "doc.circle.fill")
                     Text("Dashboard")
+
                 }
-                
+                //questo è quello che si vede all'interno
+                //della navigation view Schedule
                 NavigationView{
                     ZStack{
                         navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                         Text("Schedule")
                             .navigationBarTitle(Text("Schedule"))
-                            .navigationBarItems(trailing:
-                                HStack {
-                                    Button(action: {
-                                        print("Schedule")
-                                    }, label:{
-                                        Image(systemName: "trash")
-                                    })
-                                }
-                            )
                     }
                 }
                     .tabItem {
                         Image(systemName: "calendar.circle.fill")
                         Text("Schedule")
                     }
+                //questo è quello che si vede all'interno
+                //della navigation view Chats
                 NavigationView{
                     ZStack{
                         navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -68,9 +62,11 @@ struct ContentView: View {
                             .navigationBarItems(trailing:
                                 HStack {
                                     Button(action: {
-                                        print("Chats")
+                                        print("ciao")
                                     }, label:{
-                                        Image(systemName: "trash")
+                                        Image(systemName: "magnifyingglass")
+                                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                                        
                                     })
                                 }
                             )
@@ -80,40 +76,26 @@ struct ContentView: View {
                         Image(systemName: "message.circle.fill")
                         Text("Chats")
                     }
+                //questo è quello che si vede all'interno
+                //della navigation view Specialists
                 NavigationView{
                     ZStack{
                         navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                         Text("Specialists")
                             .navigationBarTitle(Text("Specialists"))
-                            .navigationBarItems(trailing:
-                                HStack {
-                                    Button(action: {
-                                        print("Specialists")
-                                    }, label:{
-                                        Image(systemName: "trash")
-                                    })
-                                }
-                            )
                     }
                 }
                     .tabItem {
                         Image(systemName: "asterisk.circle.fill")
                         Text("Specialist")
                     }
+                //questo è quello che si vede all'interno
+                //della navigation view Settings
                 NavigationView{
                     ZStack{
                         navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                         Text("Settings")
                             .navigationBarTitle(Text("Settings"))
-                            .navigationBarItems(trailing:
-                                HStack {
-                                    Button(action: {
-                                        print("Settings")
-                                    }, label:{
-                                        Image(systemName: "trash")
-                                    })
-                                }
-                            )
                     }
                 }
                     .tabItem {
