@@ -26,11 +26,11 @@ struct ContentView: View {
                 NavigationView{
                     ZStack{
                         navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                        Text("Dashboard")
-                            .navigationBarTitle(
-                                Text("Dashboard")
-                                    .font(.largeTitle)
-                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        Text("You are in Dashboard")
+                            .navigationBarTitle("")
+                            .navigationBarItems(leading: Text("Dashboard")
+                                                    .font(.largeTitle)
+                                                    .bold()
                             )
                     }
                 }
@@ -44,8 +44,12 @@ struct ContentView: View {
                 NavigationView{
                     ZStack{
                         navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                        Text("Schedule")
-                            .navigationBarTitle(Text("Schedule"))
+                        Text("You are in Schedule")
+                            .navigationBarTitle("")
+                            .navigationBarItems(leading: Text("Schedule")
+                                                    .font(.largeTitle)
+                                                    .bold()
+                            )
                     }
                 }
                     .tabItem {
@@ -57,19 +61,16 @@ struct ContentView: View {
                 NavigationView{
                     ZStack{
                         navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                        Text("Chats")
-                            .navigationBarTitle(Text("Chats"))
-                            .navigationBarItems(trailing:
-                                HStack {
-                                    Button(action: {
-                                        print("ciao")
-                                    }, label:{
-                                        Image(systemName: "magnifyingglass")
-                                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                                        
-                                    })
-                                }
-                            )
+                        Text("You are in Chats")
+                            .navigationBarTitle("")
+                            .navigationBarItems(leading: Text("Chats")
+                                                    .font(.largeTitle)
+                                                    .bold()
+                                                ,trailing: Button(action: {
+
+                                                }, label: { Image(systemName: "magnifyingglass")
+                                                })
+                                        )
                     }
                 }
                     .tabItem {
@@ -80,9 +81,13 @@ struct ContentView: View {
                 //della navigation view Specialists
                 NavigationView{
                     ZStack{
+                        Text("You are in Specialist")
                         navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                        Text("Specialists")
-                            .navigationBarTitle(Text("Specialists"))
+                            .navigationBarTitle("")
+                            .navigationBarItems(leading: Text("Specialist")
+                                                    .font(.largeTitle)
+                                                    .bold()
+                            )
                     }
                 }
                     .tabItem {
@@ -93,9 +98,13 @@ struct ContentView: View {
                 //della navigation view Settings
                 NavigationView{
                     ZStack{
+                        Text("You are in Settings")
                         navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                        Text("Settings")
-                            .navigationBarTitle(Text("Settings"))
+                            .navigationBarTitle("")
+                            .navigationBarItems(leading: Text("Settings")
+                                                    .font(.largeTitle)
+                                                    .bold()
+                            )
                     }
                 }
                     .tabItem {
