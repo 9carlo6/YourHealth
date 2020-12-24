@@ -10,6 +10,8 @@ import SwiftUI
 struct LoginPage: View {
     var body: some View {
         ZStack(){
+            NavigationView{
+                ZStack{
             Color(red: 255/255, green: 240/255, blue: 240/255).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             VStack{
             Text("YourHealth")
@@ -24,6 +26,8 @@ struct LoginPage: View {
                 .scaledToFill()
                 .frame(width: 900.0, height: 250.0)
                 .padding(.bottom, 60.0)
+                    }
+                }
             }
         }
     }
