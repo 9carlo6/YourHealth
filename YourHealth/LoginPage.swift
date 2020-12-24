@@ -9,7 +9,23 @@ import SwiftUI
 
 struct LoginPage: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack(){
+            Color(red: 255/255, green: 240/255, blue: 240/255).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            VStack{
+            Text("YourHealth")
+                .fontWeight(.medium)
+                .multilineTextAlignment(.center)
+                .font(.system(size: 70))
+                .foregroundColor(Color(red: 56/255, green: 55/255, blue: 64/255))
+                .padding(.top, 120.0)
+                Spacer()
+            Image("slides1")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 900.0, height: 250.0)
+                .padding(.bottom, 60.0)
+            }
+        }
     }
 }
 
