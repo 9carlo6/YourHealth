@@ -26,7 +26,55 @@ struct ContentView: View {
                 NavigationView{
                     ZStack{
                         navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                        Text("You are in Dashboard")
+                        //Text("You are in Dashboard")
+                        Image("lookingatthephone")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 300.0, height: 100.0)
+                            .padding(.bottom, 180.0)
+                            
+                        //parte bottoni
+                        VStack {
+                            
+                                    Button(action: {
+                                        print("join tapped!")
+                                    }) {
+                                        HStack {
+                                            Text("Join a center")
+                                                .fontWeight(.semibold)
+                                                .font(.title)
+                                        }
+                                        .frame(minWidth: 0, maxWidth: .infinity)
+                                        .padding()
+                                        .foregroundColor(.black)
+                                        .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
+                                        .cornerRadius(40)
+                                        .padding(.horizontal, 20)
+                                    }
+                         
+                                    Button(action: {
+                                        print("create tapped!")
+                                    }) {
+                                        HStack {
+                                            Text("Create a new center")
+                                                .fontWeight(.semibold)
+                                                .font(.title)
+                                        }
+                                        .frame(minWidth: 0, maxWidth: .infinity)
+                                        .padding()
+                                        .foregroundColor(.black)
+                                        .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
+                                        .cornerRadius(40)
+                                        .padding(.horizontal, 20)
+                                    }
+                         
+                        }
+                        .padding(.top, 400)
+                            
+                        //fine parte bottoni
+                        
+                        
+                        
                             .navigationBarTitle("")
                             .navigationBarItems(leading: Text("Dashboard")
                                                     .font(.largeTitle)
@@ -118,6 +166,19 @@ struct ContentView: View {
                    }
             
         }
+    }
+}
+
+struct GradientBackgroundStyle: ButtonStyle {
+ 
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .padding()
+            .foregroundColor(.white)
+            .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
+            .cornerRadius(40)
+            .padding(.horizontal, 20)
     }
 }
 
