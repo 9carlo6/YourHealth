@@ -51,7 +51,7 @@ struct ContentView: View {
          
                     
                         HStack {
-                            NavigationLink(destination: JoinCenterView()) {
+                            NavigationLink(destination: CreateNewCenter()) {
                             Text("Create a new center")
                                 .fontWeight(.semibold)
                                 .font(.title)
@@ -160,6 +160,8 @@ struct ContentView: View {
         
     }
 }
+
+
 
 
 
