@@ -25,7 +25,13 @@ struct CreateNewCenter: View {
     @State private var centerPhone = ""
     
     //per nascondere il bottone di ritorno
-    @State var navigationBarBackButtonHidden = true
+    @Environment(\.presentationMode) var presentationMode
+    @State var name = ""
+    
+    //variabile globale per capire se l'utente
+    //è autenticato o meno
+    var userSettings = UserSettings()
+    
     
     var body: some View {
         ZStack{
@@ -71,11 +77,9 @@ struct CreateNewCenter: View {
                     //parte bottoni
                     VStack {
                         HStack {
-                            NavigationLink(destination: ContentView()) {
-                            Text("Submit")
-                                .fontWeight(.semibold)
-                                .font(.title)
-                            }
+                            //clicca submit per tornare indietro
+                            
+                            Button("Submit",action: { self.presentationMode.wrappedValue.dismiss() })
                         }
                             .frame(minWidth: 0, maxWidth: .infinity)
                             .padding()
@@ -91,6 +95,7 @@ struct CreateNewCenter: View {
                                             .font(.largeTitle)
                                             .bold())
                     }
+
             }
         }
     }

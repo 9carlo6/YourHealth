@@ -16,6 +16,9 @@ struct ContentView: View {
     //colore per la navigation view
     @State var navColor: Color = Color.init(red: 255/255, green: 240/255, blue: 240/255)
     
+    //variabile globale per capire se l'utente
+    //è autenticato o meno
+    var userSettings = UserSettings()
     
     var body: some View{
         TabView{
@@ -55,7 +58,9 @@ struct ContentView: View {
                             Text("Create a new center")
                                 .fontWeight(.semibold)
                                 .font(.title)
-                        }
+                            
+                            }
+                            
                         }
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .padding()
@@ -160,6 +165,8 @@ struct ContentView: View {
         
     }
 }
+
+
 
 
 
