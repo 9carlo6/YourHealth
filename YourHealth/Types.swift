@@ -7,6 +7,7 @@
 
 
 //questo file serve per gestire la parte di autenticazione
+//qui verrà gestita anche la parte dove di divisione tra utente e specialista
 import SwiftUI
 
 class UserSettings {
