@@ -1,13 +1,14 @@
 //
-//  JoinCenterView.swift
+//  CreateNewCenter.swift
 //  YourHealth
 //
-//  Created by pannullocarlo on 27/12/2020.
+//  Created by pannullocarlo on 29/12/2020.
 //
 
 import SwiftUI
 
-struct JoinCenterView: View {
+struct CreateNewCenter: View {
+    
     init(){
             UITableView.appearance().backgroundColor = .clear
         }
@@ -18,10 +19,19 @@ struct JoinCenterView: View {
     //colore per la navigation view
     @State var navColor: Color = Color.init(red: 255/255, green: 240/255, blue: 240/255)
     //string per form
-    @State private var code = ""
+    @State private var centerName = ""
+    @State private var centerEmail = ""
+    @State private var centerWebSite = ""
+    @State private var centerPhone = ""
     
     //per nascondere il bottone di ritorno
-    @State var navigationBarBackButtonHidden = true
+    @Environment(\.presentationMode) var presentationMode
+    @State var name = ""
+    
+    //variabile globale per capire se l'utente
+    //è autenticato o meno
+    var userSettings = UserSettings()
+    
     
     var body: some View {
         ZStack{
@@ -38,21 +48,38 @@ struct JoinCenterView: View {
                     //per il colore di background di dello ZStack
                     navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     Form {
-                        Section(header: Text("Enter the code you recived")
+                        Section(header: Text("Center Name")
                                     .fontWeight(.light)
                                     .font(.headline)
                                     .foregroundColor(.black)){
-                            TextField("Code", text: $code)
+                            TextField("Name", text: $centerName)
+                        }
+                        Section(header: Text("Center Email")
+                                    .fontWeight(.light)
+                                    .font(.headline)
+                                    .foregroundColor(.black)){
+                            TextField("Email", text: $centerEmail)
+                        }
+                        Section(header: Text("Center Website")
+                                    .fontWeight(.light)
+                                    .font(.headline)
+                                    .foregroundColor(.black)){
+                            TextField("Website", text: $centerWebSite)
+                        }
+                        Section(header: Text("Center Phone")
+                                    .fontWeight(.light)
+                                    .font(.headline)
+                                    .foregroundColor(.black)){
+                            TextField("Phone", text: $centerPhone)
                         }
                     }
+                     
                     //parte bottoni
                     VStack {
                         HStack {
-                            NavigationLink(destination: ContentView()) {
-                            Text("Submit")
-                                .fontWeight(.semibold)
-                                .font(.title)
-                            }
+                            //clicca submit per tornare indietro
+                            
+                            Button("Submit",action: { self.presentationMode.wrappedValue.dismiss() })
                         }
                             .frame(minWidth: 0, maxWidth: .infinity)
                             .padding()
@@ -64,20 +91,18 @@ struct JoinCenterView: View {
                         .padding(.top, 400)
                     //fine parte bottoni
                     .navigationBarTitle("")
-                    .navigationBarItems(leading: Text("Join a Center")
+                    .navigationBarItems(leading: Text("Create New Center")
                                             .font(.largeTitle)
                                             .bold())
-                    
-                    
-                }
+                    }
+
             }
         }
     }
-    
 }
 
-struct JoinCenterView_Previews: PreviewProvider {
+struct CreateNewCenter_Previews: PreviewProvider {
     static var previews: some View {
-        JoinCenterView()
+        CreateNewCenter()
     }
 }
