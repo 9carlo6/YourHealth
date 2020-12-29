@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct LoginPage: View {
+struct LoginPageSpecialist: View {
     
     init(){
             UITableView.appearance().backgroundColor = .clear
@@ -14,11 +14,11 @@ struct LoginPage: View {
     //colore per la navigation view
     @State var navColor: Color = Color.init(red: 255/255, green: 240/255, blue: 240/255)
     //string per form
-    @State private var userName = ""
-    @State private var userSurname = ""
-    @State private var userEmail = ""
-    @State private var userPassword = ""
-    
+    @State private var spName = ""
+    @State private var spSurname = ""
+    @State private var spEmail = ""
+    @State private var spPassword = ""
+    @State private var spCode = ""
     //per nascondere il bottone di ritorno
     @Environment(\.presentationMode) var presentationMode
     @State var name = ""
@@ -44,25 +44,31 @@ struct LoginPage: View {
                                     .fontWeight(.light)
                                     .font(.headline)
                                     .foregroundColor(.black)){
-                            TextField("Name", text: $userName)
+                            TextField("Name", text: $spName)
                         }
                         Section(header: Text("Surname")
                                     .fontWeight(.light)
                                     .font(.headline)
                                     .foregroundColor(.black)){
-                            TextField("Surname", text: $userSurname)
+                            TextField("Surname", text: $spSurname)
                         }
                         Section(header: Text("Email")
                                     .fontWeight(.light)
                                     .font(.headline)
                                     .foregroundColor(.black)){
-                            TextField("Email", text: $userEmail)
+                            TextField("Email", text: $spEmail)
                         }
                         Section(header: Text("Password")
                                     .fontWeight(.light)
                                     .font(.headline)
                                     .foregroundColor(.black)){
-                            SecureField("Password", text: $userPassword)
+                            SecureField("Password", text: $spPassword)
+                        }
+                        Section(header: Text("Professional board code")
+                                    .fontWeight(.light)
+                                    .font(.headline)
+                                    .foregroundColor(.black)){
+                            SecureField("Code", text: $spCode)
                         }
                     }
                      
@@ -80,7 +86,7 @@ struct LoginPage: View {
                             .cornerRadius(40)
                             .padding(.horizontal, 20)
                         }
-                        .padding(.top, 400)
+                        .padding(.top, 450)
                     //fine parte bottoni
                     .navigationBarTitle("")
                     .navigationBarItems(leading: Text("Sign Up")
@@ -94,8 +100,8 @@ struct LoginPage: View {
     }
 }
 
-struct LoginPage_Previews: PreviewProvider {
+struct LoginPageSpecialist_Previews: PreviewProvider {
     static var previews: some View {
-        LoginPage()
+        LoginPageSpecialist()
     }
 }
