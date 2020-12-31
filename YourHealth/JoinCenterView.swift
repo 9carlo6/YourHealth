@@ -23,6 +23,10 @@ struct JoinCenterView: View {
     //per nascondere il bottone di ritorno
     @State var navigationBarBackButtonHidden = true
     
+    //per tornare indietro
+    @Environment(\.presentationMode) var presentationMode
+    @State var name = ""
+    
     var body: some View {
         ZStack{
             //per il colore di background di tutta la view
@@ -36,7 +40,7 @@ struct JoinCenterView: View {
             NavigationView{
                 ZStack{
                     //per il colore di background di dello ZStack
-                    navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                    navColor.edgesIgnoringSafeArea(.all)
                     Form {
                         Section(header: Text("Enter the code you recived")
                                     .fontWeight(.light)
@@ -48,20 +52,16 @@ struct JoinCenterView: View {
                     //parte bottoni
                     VStack {
                         HStack {
-                            NavigationLink(destination: ContentView()) {
-                            Text("Submit")
-                                .fontWeight(.semibold)
-                                .font(.title)
-                            }
+                            Button("Submit",action: { self.presentationMode.wrappedValue.dismiss() })
                         }
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                            .padding()
-                            .foregroundColor(.black)
-                            .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
-                            .cornerRadius(40)
-                            .padding(.horizontal, 20)
-                        }
-                        .padding(.top, 400)
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .padding()
+                        .foregroundColor(.black)
+                        .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
+                        .cornerRadius(40)
+                        .padding(.horizontal, 20)
+                    }
+                    .padding(.top, 400)
                     //fine parte bottoni
                     .navigationBarTitle("")
                     .navigationBarItems(leading: Text("Join a Center")

@@ -27,13 +27,12 @@ struct ContentView: View {
             NavigationView{
                 ZStack{
                     navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                    //Text("You are in Dashboard")
                     Image("lookingatthephone")
                         .resizable()
                         .scaledToFill()
                         .frame(width: 300.0, height: 100.0)
                         .padding(.bottom, 180.0)
-                        
+                    
                     //parte bottoni
                     VStack {
                         HStack {
@@ -77,7 +76,6 @@ struct ContentView: View {
                     .navigationBarItems(leading: Text("Dashboard")
                                             .font(.largeTitle)
                                             .bold())
-                    
                 }
             }
             .tabItem() {
@@ -107,9 +105,9 @@ struct ContentView: View {
             NavigationView{
                 ZStack{
                     navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                    Text("You are in Chats")
+                    Text("You are in Notifications")
                         .navigationBarTitle("")
-                        .navigationBarItems(leading: Text("Chats")
+                        .navigationBarItems(leading: Text("Notifications")
                                                 .font(.largeTitle)
                                                 .bold()
                                             ,trailing: Button(action: {
@@ -121,7 +119,7 @@ struct ContentView: View {
             }
                 .tabItem {
                     Image(systemName: "message.circle.fill")
-                    Text("Chats")
+                    Text("Notifications")
                 }
             //questo è quello che si vede all'interno
             //della navigation view Specialists
