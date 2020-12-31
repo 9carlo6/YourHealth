@@ -24,7 +24,7 @@ struct CreateNewCenter: View {
     @State private var centerWebSite = ""
     @State private var centerPhone = ""
     
-    //per nascondere il bottone di ritorno
+    //per tornare indietro
     @Environment(\.presentationMode) var presentationMode
     @State var name = ""
     
@@ -80,6 +80,9 @@ struct CreateNewCenter: View {
                             //clicca submit per tornare indietro
                             
                             Button("Submit",action: { self.presentationMode.wrappedValue.dismiss() })
+                            /*
+                            Button("prova",action: {self.userSettings.isAuthenticated = true })
+                             */
                         }
                             .frame(minWidth: 0, maxWidth: .infinity)
                             .padding()
