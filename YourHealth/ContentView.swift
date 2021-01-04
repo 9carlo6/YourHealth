@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 
 
 struct ContentView: View {
+    
+    //var db: Firestore!
     
     //colore per la tab view
     @State var tabColor: UIColor = UIColor.init(red: 255/255, green: 226/255, blue: 226/255,alpha: 0.0)
@@ -163,12 +168,6 @@ struct ContentView: View {
         
     }
 }
-
-
-
-
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
