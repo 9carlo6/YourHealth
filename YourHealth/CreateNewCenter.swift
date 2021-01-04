@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 struct CreateNewCenter: View {
     
@@ -79,10 +82,13 @@ struct CreateNewCenter: View {
                         HStack {
                             //clicca submit per tornare indietro
                             
-                            Button("Submit",action: { self.presentationMode.wrappedValue.dismiss() })
-                            /*
-                            Button("prova",action: {self.userSettings.isAuthenticated = true })
-                             */
+                            Button(action: { self.presentationMode.wrappedValue.dismiss()
+                                addAdaLovelace(name: centerName,email: centerEmail,website: centerWebSite,phone: centerPhone)
+                             }) {
+                                Text("Submit")
+                                    .fontWeight(.semibold)
+                                    .font(.title)
+                            }
                         }
                             .frame(minWidth: 0, maxWidth: .infinity)
                             .padding()
@@ -103,6 +109,27 @@ struct CreateNewCenter: View {
         }
     }
 }
+
+//funzione prova firebase da cancellare
+private func addAdaLovelace(name: String, email: String, website: String, phone: String) {
+        // [START add_ada_lovelace]
+        // Add a new document with a generated ID+
+        let db = Firestore.firestore()
+        var ref: DocumentReference? = nil
+        ref = db.collection("Centers").addDocument(data: [
+            "Name": name,
+            "Email": email,
+            "Website": website,
+            "Phone": phone
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
+        // [END add_ada_lovelace]
+    }
 
 struct CreateNewCenter_Previews: PreviewProvider {
     static var previews: some View {

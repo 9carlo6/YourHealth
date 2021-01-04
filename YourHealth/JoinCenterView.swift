@@ -6,6 +6,10 @@
 //
 
 import SwiftUI
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+
 
 struct JoinCenterView: View {
     init(){
@@ -26,6 +30,9 @@ struct JoinCenterView: View {
     //per tornare indietro
     @Environment(\.presentationMode) var presentationMode
     @State var name = ""
+    
+    //per l'allert
+    @State private var showingAlert = false
     
     var body: some View {
         ZStack{
@@ -52,7 +59,27 @@ struct JoinCenterView: View {
                     //parte bottoni
                     VStack {
                         HStack {
-                            Button("Submit",action: { self.presentationMode.wrappedValue.dismiss() })
+                            
+                            Button(action: { self.presentationMode.wrappedValue.dismiss()
+                             }) {
+                                Text("Submit")
+                                    .fontWeight(.semibold)
+                                    .font(.title)
+                            }
+                            
+                            /*
+                            Button(action: { self.presentationMode.wrappedValue.dismiss()
+                                self.showingAlert = true
+                             }) {
+                                Text("Submit")
+                                    .fontWeight(.semibold)
+                                    .font(.title)
+                            }
+                            .alert(isPresented: $showingAlert) {
+                                Alert(title: Text("Important message"), message: Text("Wear sunscreen"), dismissButton: .default(Text("Got it!")))
+                            }
+                            */
+                            
                         }
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .padding()
@@ -75,6 +102,7 @@ struct JoinCenterView: View {
     }
     
 }
+
 
 struct JoinCenterView_Previews: PreviewProvider {
     static var previews: some View {
