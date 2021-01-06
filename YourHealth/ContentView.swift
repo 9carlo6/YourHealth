@@ -89,7 +89,7 @@ struct ContentView: View {
 
             }
             //questo è quello che si vede all'interno
-            //della navigation view Schedule
+            //della navigation view Appointments
             NavigationView{
                 ZStack{
                     navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
