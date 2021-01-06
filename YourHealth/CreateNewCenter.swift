@@ -83,7 +83,7 @@ struct CreateNewCenter: View {
                             //clicca submit per tornare indietro
                             
                             Button(action: { self.presentationMode.wrappedValue.dismiss()
-                                addAdaLovelace(name: centerName,email: centerEmail,website: centerWebSite,phone: centerPhone)
+                                createNewCenter(name: centerName,email: centerEmail,website: centerWebSite,phone: centerPhone)
                              }) {
                                 Text("Submit")
                                     .fontWeight(.semibold)
@@ -111,7 +111,7 @@ struct CreateNewCenter: View {
 }
 
 //funzione prova firebase da cancellare
-private func addAdaLovelace(name: String, email: String, website: String, phone: String) {
+private func createNewCenter(name: String, email: String, website: String, phone: String) {
         // [START add_ada_lovelace]
         // Add a new document with a generated ID+
         let db = Firestore.firestore()

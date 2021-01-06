@@ -93,9 +93,9 @@ struct ContentView: View {
             NavigationView{
                 ZStack{
                     navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                    Text("You are in Schedule")
+                    Text("You are in Appointments")
                         .navigationBarTitle("")
-                        .navigationBarItems(leading: Text("Schedule")
+                        .navigationBarItems(leading: Text("Appointments")
                                                 .font(.largeTitle)
                                                 .bold()
                         )
@@ -103,7 +103,7 @@ struct ContentView: View {
             }
                 .tabItem {
                     Image(systemName: "calendar.circle.fill")
-                    Text("Schedule")
+                    Text("Appointments")
                 }
             //questo è quello che si vede all'interno
             //della navigation view Chats
