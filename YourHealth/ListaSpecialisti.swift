@@ -179,7 +179,7 @@ struct ProfileSpecialist: View {
             }
 
         
-        }
+        }.padding(.top, -50)
         
         
     }

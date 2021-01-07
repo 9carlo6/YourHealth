@@ -21,10 +21,18 @@ struct ContentView: View {
     //colore per la navigation view
     @State var navColor: Color = Color.init(red: 255/255, green: 240/255, blue: 240/255)
     
+
     //variabile globale per capire se l'utente
     //è autenticato o meno
     var userSettings = UserSettings()
     
+    //Inizio variabili angelo
+    
+    
+    
+    
+    //Fine Variabili angelo
+
     var body: some View{
         TabView{
             //questo è quello che si vede all'interno
