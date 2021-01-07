@@ -7,13 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1018992025A5D95F0007F314 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1018991F25A5D95F0007F314 /* GoogleService-Info.plist */; };
 		1018992325A5E0260007F314 /* ListaSpecialisti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1018992225A5E0260007F314 /* ListaSpecialisti.swift */; };
 		1018992625A5F5FE0007F314 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1018992525A5F5FE0007F314 /* Settings.swift */; };
 		1D3494DB9B0B6F1D11D036E7 /* Pods_YourHealth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8046F541A97932FE9C088347 /* Pods_YourHealth.framework */; };
 		6A982C1D259BD655005D707B /* mainview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A982C1C259BD655005D707B /* mainview.swift */; };
 		6A982C20259BDFD2005D707B /* LoginPageSpecialist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A982C1F259BDFD2005D707B /* LoginPageSpecialist.swift */; };
 		6AD36C982594BD6F00281384 /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD36C972594BD6F00281384 /* LoginPage.swift */; };
+		7B39721125A7139D006A7060 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B39721025A7139D006A7060 /* GoogleService-Info.plist */; };
+		7B39728625A72C3E006A7060 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B39728525A72C3E006A7060 /* SessionStore.swift */; };
+		7B39728A25A72C68006A7060 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B39728925A72C68006A7060 /* User.swift */; };
+		7B642D3025A73180009F3171 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B642D2F25A73180009F3171 /* Login.swift */; };
+		7B642D3325A73317009F3171 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B642D3225A73317009F3171 /* SignInView.swift */; };
+		7B642D3B25A749FE009F3171 /* InlineAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B642D3A25A749FE009F3171 /* InlineAlert.swift */; };
 		7B9BF6392598A69800C55398 /* JoinCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9BF6382598A69800C55398 /* JoinCenterView.swift */; };
 		7B9BF63C259B1DB500C55398 /* CreateNewCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9BF63B259B1DB500C55398 /* CreateNewCenter.swift */; };
 		7B9BF647259B4E1D00C55398 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9BF646259B4E1D00C55398 /* Types.swift */; };
@@ -27,13 +32,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1018991F25A5D95F0007F314 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1018992225A5E0260007F314 /* ListaSpecialisti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaSpecialisti.swift; sourceTree = "<group>"; };
 		1018992525A5F5FE0007F314 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		4B8FFBF2B6CF602A18E5C4EE /* Pods-YourHealth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourHealth.release.xcconfig"; path = "Target Support Files/Pods-YourHealth/Pods-YourHealth.release.xcconfig"; sourceTree = "<group>"; };
 		6A982C1C259BD655005D707B /* mainview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainview.swift; sourceTree = "<group>"; };
 		6A982C1F259BDFD2005D707B /* LoginPageSpecialist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageSpecialist.swift; sourceTree = "<group>"; };
 		6AD36C972594BD6F00281384 /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
+		7B39721025A7139D006A7060 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7B39728525A72C3E006A7060 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
+		7B39728925A72C68006A7060 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7B642D2F25A73180009F3171 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		7B642D3225A73317009F3171 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		7B642D3A25A749FE009F3171 /* InlineAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineAlert.swift; sourceTree = "<group>"; };
 		7B9BF6382598A69800C55398 /* JoinCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinCenterView.swift; sourceTree = "<group>"; };
 		7B9BF63B259B1DB500C55398 /* CreateNewCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewCenter.swift; sourceTree = "<group>"; };
 		7B9BF646259B4E1D00C55398 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
@@ -62,6 +72,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B39727F25A727AB006A7060 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				6A982C1C259BD655005D707B /* mainview.swift */,
+				6A982C1F259BDFD2005D707B /* LoginPageSpecialist.swift */,
+				6AD36C972594BD6F00281384 /* LoginPage.swift */,
+				7B642D2F25A73180009F3171 /* Login.swift */,
+				7B642D3225A73317009F3171 /* SignInView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		7B39728425A72C29006A7060 /* classi */ = {
+			isa = PBXGroup;
+			children = (
+				7B39728525A72C3E006A7060 /* SessionStore.swift */,
+				7B39728925A72C68006A7060 /* User.swift */,
+			);
+			path = classi;
+			sourceTree = "<group>";
+		};
+		7B642D3925A749DD009F3171 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				7B642D3A25A749FE009F3171 /* InlineAlert.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 		7BCC472F2591F039001AB0E3 = {
 			isa = PBXGroup;
 			children = (
@@ -85,16 +124,16 @@
 			children = (
 				7BCC473B2591F039001AB0E3 /* AppDelegate.swift */,
 				7BCC473D2591F039001AB0E3 /* SceneDelegate.swift */,
-				7B9BF646259B4E1D00C55398 /* Types.swift */,
+				7B642D3925A749DD009F3171 /* Alert */,
+				7B39728425A72C29006A7060 /* classi */,
+				7B39727F25A727AB006A7060 /* Login */,
 				7BCC473F2591F039001AB0E3 /* ContentView.swift */,
-				1018992525A5F5FE0007F314 /* Settings.swift */,
 				1018992225A5E0260007F314 /* ListaSpecialisti.swift */,
-				7B9BF63B259B1DB500C55398 /* CreateNewCenter.swift */,
-				1018991F25A5D95F0007F314 /* GoogleService-Info.plist */,
 				7B9BF6382598A69800C55398 /* JoinCenterView.swift */,
-				6AD36C972594BD6F00281384 /* LoginPage.swift */,
-				6A982C1C259BD655005D707B /* mainview.swift */,
-				6A982C1F259BDFD2005D707B /* LoginPageSpecialist.swift */,
+				7B9BF63B259B1DB500C55398 /* CreateNewCenter.swift */,
+				1018992525A5F5FE0007F314 /* Settings.swift */,
+				7B39721025A7139D006A7060 /* GoogleService-Info.plist */,
+				7B9BF646259B4E1D00C55398 /* Types.swift */,
 				7BCC47442591F03B001AB0E3 /* Assets.xcassets */,
 				7BCC47492591F03B001AB0E3 /* LaunchScreen.storyboard */,
 				7BCC474C2591F03B001AB0E3 /* Info.plist */,
@@ -189,7 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BCC474B2591F03B001AB0E3 /* LaunchScreen.storyboard in Resources */,
-				1018992025A5D95F0007F314 /* GoogleService-Info.plist in Resources */,
+				7B39721125A7139D006A7060 /* GoogleService-Info.plist in Resources */,
 				7BCC47482591F03B001AB0E3 /* Preview Assets.xcassets in Resources */,
 				7BCC47452591F03B001AB0E3 /* Assets.xcassets in Resources */,
 			);
@@ -245,16 +284,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BCC47432591F039001AB0E3 /* YourHealth.xcdatamodeld in Sources */,
+				7B642D3B25A749FE009F3171 /* InlineAlert.swift in Sources */,
 				7BCC473C2591F039001AB0E3 /* AppDelegate.swift in Sources */,
 				6A982C1D259BD655005D707B /* mainview.swift in Sources */,
 				7B9BF63C259B1DB500C55398 /* CreateNewCenter.swift in Sources */,
 				7B9BF647259B4E1D00C55398 /* Types.swift in Sources */,
 				6A982C20259BDFD2005D707B /* LoginPageSpecialist.swift in Sources */,
+				7B642D3025A73180009F3171 /* Login.swift in Sources */,
 				1018992625A5F5FE0007F314 /* Settings.swift in Sources */,
+				7B39728A25A72C68006A7060 /* User.swift in Sources */,
+				7B39728625A72C3E006A7060 /* SessionStore.swift in Sources */,
 				1018992325A5E0260007F314 /* ListaSpecialisti.swift in Sources */,
 				7BCC473E2591F039001AB0E3 /* SceneDelegate.swift in Sources */,
 				7B9BF6392598A69800C55398 /* JoinCenterView.swift in Sources */,
 				6AD36C982594BD6F00281384 /* LoginPage.swift in Sources */,
+				7B642D3325A73317009F3171 /* SignInView.swift in Sources */,
 				7BCC47402591F039001AB0E3 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -15,35 +15,44 @@ struct mainview: View {
 
         TabView() {
             ZStack{
-      VStack{
-        Text("YourHealth")
-            .fontWeight(.medium)
-            .multilineTextAlignment(.center)
-            .font(.system(size: 70))
-            .foregroundColor(Color(red: 56/255, green: 55/255, blue: 64/255))
-            .padding(.top, 120.0)
-            Spacer()
-        Image("slides1")
-            .resizable()
-            .scaledToFill()
-            .frame(width: 900.0, height: 250.0)
-            .padding(.bottom, 250.0)
-                    }
+              VStack{
+                Text("YourHealth")
+                    .fontWeight(.medium)
+                    .multilineTextAlignment(.center)
+                    .font(.system(size: 70))
+                    .foregroundColor(Color(red: 56/255, green: 55/255, blue: 64/255))
+                    .padding(.top, 120.0)
+                    Spacer()
+                Image("slides1")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 900.0, height: 250.0)
+                    .padding(.bottom, 250.0)
+                            }
                 }
                 .tabItem {
                 Text("1Tab")
-            }
+                }
 
             ZStack{
       VStack{
+        Text("if you already have an account")
+            .font(.subheadline)
+        NavigationLink(destination: Login().environmentObject(SessionStore())) {
+        Text("Sing In")
+            .fontWeight(.semibold)
+            .font(.title)
+            
+        }
         Text("Who are you?")
             .fontWeight(.medium)
             .multilineTextAlignment(.center)
             .font(.system(size: 50))
             .foregroundColor(Color(red: 56/255, green: 55/255, blue: 64/255))
-            .padding(.top, 120.0)
         //parte bottoni
         VStack {
+            
+            
             HStack {
                 //per eliminare back add navigationBarBackButtonHidden(true)
                 NavigationLink(destination: LoginPage()) {
@@ -60,7 +69,8 @@ struct mainview: View {
             .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
             .cornerRadius(40)
             .padding(.horizontal, 20)
-        
+            
+            
 
         
             HStack {
@@ -79,18 +89,18 @@ struct mainview: View {
             .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
             .cornerRadius(40)
             .padding(.horizontal, 20)
-            
+                
             
          
         }
-            Spacer()
+        Spacer()
         Image("slides1")
             .resizable()
             .scaledToFill()
             .frame(width: 900.0, height: 200.0)
             .padding(.bottom, 250.0)
-                    }
-                }
+        }
+    }
 
                 .tabItem {
                 Text("2Tab")

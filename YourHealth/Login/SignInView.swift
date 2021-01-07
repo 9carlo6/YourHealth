@@ -1,68 +1,68 @@
-
+//
+//  SignInView.swift
+//  YourHealth
+//
+//  Created by pannullocarlo on 07/01/2021.
+//
 
 import SwiftUI
 
-struct LoginPage: View {
+struct SignInView : View {
     
     init(){
-            UITableView.appearance().backgroundColor = .clear
+        UITableView.appearance().backgroundColor = .clear
+    }
+
+    @State var email: String = "prova@gmail.com"
+    @State var password: String = "password"
+    @State var loading = false
+    @State var error = false
+
+    @EnvironmentObject var session: SessionStore
+
+    func signIn () {
+        loading = true
+        error = false
+        session.signIn(email: email, password: password) { (result, error) in
+            self.loading = false
+            if error != nil {
+                self.error = true
+            } else {
+                self.email = ""
+                self.password = ""
+            }
         }
-    
+    }
     
     //colore per la tab view
     @State var tabColor: UIColor = UIColor.init(red: 255/255, green: 226/255, blue: 226/255,alpha: 0.0)
     //colore per la navigation view
     @State var navColor: Color = Color.init(red: 255/255, green: 240/255, blue: 240/255)
-    //string per form
-    @State private var userName = ""
-    @State private var userSurname = ""
-    @State private var userEmail = ""
-    @State private var userPassword = ""
-    
     //per nascondere il bottone di ritorno
     @Environment(\.presentationMode) var presentationMode
     @State var name = ""
-    
+
     var body: some View {
-        
-        NavigationView{
-            
-        ZStack{
-            //per il colore di background di tutta la view
-            navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            /*
-            //Per nascondere il bottone di ritorno
-            Button("Show back") {
-                        self.navigationBarBackButtonHidden = false
-                    }.navigationBarBackButtonHidden(navigationBarBackButtonHidden)
-            */
+            ZStack{
+                //per il colore di background di tutta la view
+                navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                
                 ZStack{
                     //per il colore di background di dello ZStack
                     navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     Form {
-                        Section(header: Text("Name")
-                                    .fontWeight(.light)
-                                    .font(.headline)
-                                    .foregroundColor(.black)){
-                            TextField("Name", text: $userName)
-                        }
-                        Section(header: Text("Surname")
-                                    .fontWeight(.light)
-                                    .font(.headline)
-                                    .foregroundColor(.black)){
-                            TextField("Surname", text: $userSurname)
-                        }
+                        
                         Section(header: Text("Email")
                                     .fontWeight(.light)
                                     .font(.headline)
                                     .foregroundColor(.black)){
-                            TextField("Email", text: $userEmail)
+                            TextField("Email", text: $email)
                         }
                         Section(header: Text("Password")
                                     .fontWeight(.light)
                                     .font(.headline)
                                     .foregroundColor(.black)){
-                            SecureField("Password", text: $userPassword)
+                            SecureField("Password", text: $password)
                         }
                     }
                      
@@ -71,7 +71,17 @@ struct LoginPage: View {
                         HStack {
                             //clicca submit per tornare indietro
                             
-                            Button("Submit",action: { self.presentationMode.wrappedValue.dismiss() })
+                            if (error) {
+                                Text("errore nel sign in")
+                            }
+                            
+                            NavigationLink(destination: ContentView().environmentObject(SessionStore())) {
+                                    Text("Sign In")
+                                }.simultaneousGesture(TapGesture().onEnded{
+                                signIn()
+                            })
+                            
+                            
                         }
                             .frame(minWidth: 0, maxWidth: .infinity)
                             .padding()
@@ -80,22 +90,16 @@ struct LoginPage: View {
                             .cornerRadius(40)
                             .padding(.horizontal, 20)
                         }
-                        .padding(.top, 400)
+                        .padding(.top, 450)
                     //fine parte bottoni
                     .navigationBarTitle("")
-                    .navigationBarItems(leading: Text("Sign Up")
+                    .navigationBarItems(leading: Text("Sign In")
                                             .font(.largeTitle)
                                             .bold())
 
                     }
-
             }
-        }
+        
     }
 }
 
-struct LoginPage_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginPage()
-    }
-}

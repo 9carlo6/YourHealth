@@ -10,6 +10,7 @@ target 'YourHealth' do
 # add the Firebase pod for Google Analytics
 pod 'Firebase/Analytics'
 
+pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
 pod 'FirebaseFirestoreSwift'
 # add pods for any other desired Firebase products
