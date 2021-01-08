@@ -136,38 +136,20 @@ struct ContentView: View {
                 }
             //questo è quello che si vede all'interno
             //della navigation view Specialists
-            NavigationView{
-                ZStack{
-                    Text("You are in Specialist")
-                    navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                        .navigationBarTitle("")
-                        .navigationBarItems(leading: Text("Specialist")
-                                                .font(.largeTitle)
-                                                .bold()
-                        )
-                }
+            ListaSpecialisti()
+                
+            .tabItem {
+                Image(systemName: "asterisk.circle.fill")
+                Text("Specialist")
             }
-                .tabItem {
-                    Image(systemName: "asterisk.circle.fill")
-                    Text("Specialist")
-                }
             //questo è quello che si vede all'interno
             //della navigation view Settings
-            NavigationView{
-                ZStack{
-                    Text("You are in Settings")
-                    navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                        .navigationBarTitle("")
-                        .navigationBarItems(leading: Text("Settings")
-                                                .font(.largeTitle)
-                                                .bold()
-                        )
-                }
+            Settings()
+                
+            .tabItem {
+                Image(systemName: "gearshape.fill")
+                Text("Settings")
             }
-                .tabItem {
-                    Image(systemName: "gearshape.fill")
-                    Text("Settings")
-                }
         }
         .accentColor(.black)
         .onAppear() {
