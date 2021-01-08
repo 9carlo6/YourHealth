@@ -4,7 +4,6 @@
 //
 //  Created by pannullocarlo on 29/12/2020.
 //
-
 import SwiftUI
 import FirebaseCore
 import FirebaseFirestore

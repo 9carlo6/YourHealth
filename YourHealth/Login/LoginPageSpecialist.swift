@@ -1,13 +1,16 @@
 
 
 import SwiftUI
+import FirebaseCore
+import Firebase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 struct LoginPageSpecialist: View {
     
     init(){
             UITableView.appearance().backgroundColor = .clear
         }
-    
     
     //colore per la tab view
     @State var tabColor: UIColor = UIColor.init(red: 255/255, green: 226/255, blue: 226/255,alpha: 0.0)
@@ -77,7 +80,9 @@ struct LoginPageSpecialist: View {
                         HStack {
                             //clicca submit per tornare indietro
                             
-                            Button("Submit",action: { self.presentationMode.wrappedValue.dismiss() })
+                            Button("Submit",action: {
+                                createNewCenter(email: spEmail,password: spPassword)
+                            })
                         }
                             .frame(minWidth: 0, maxWidth: .infinity)
                             .padding()
@@ -85,7 +90,8 @@ struct LoginPageSpecialist: View {
                             .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
                             .cornerRadius(40)
                             .padding(.horizontal, 20)
-                        }
+                        
+                    }
                         .padding(.top, 450)
                     //fine parte bottoni
                     .navigationBarTitle("")
@@ -97,6 +103,13 @@ struct LoginPageSpecialist: View {
 
             }
         }
+    }
+}
+//funzione per registrare un nuovo specialista
+private func createNewCenter(email: String, password: String) {
+        
+    Auth.auth().createUser(withEmail: email, password: password) { authResult, error in // ..
+        
     }
 }
 
