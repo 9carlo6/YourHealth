@@ -6,14 +6,11 @@
 //
 import SwiftUI
 import FirebaseCore
+import Firebase
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 struct CreateNewCenter: View {
-    
-    init(){
-            UITableView.appearance().backgroundColor = .clear
-        }
     
     
     //colore per la tab view
@@ -25,6 +22,9 @@ struct CreateNewCenter: View {
     @State private var centerEmail = ""
     @State private var centerWebSite = ""
     @State private var centerPhone = ""
+    
+    //variabile necessaria per aggiornare il conenuto della dashboard
+    @Binding var with_center: Bool
     
     //per tornare indietro
     @Environment(\.presentationMode) var presentationMode
@@ -39,12 +39,6 @@ struct CreateNewCenter: View {
         ZStack{
             //per il colore di background di tutta la view
             navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            /*
-            //Per nascondere il bottone di ritorno
-            Button("Show back") {
-                        self.navigationBarBackButtonHidden = false
-                    }.navigationBarBackButtonHidden(navigationBarBackButtonHidden)
-            */
             NavigationView{
                 ZStack{
                     //per il colore di background di dello ZStack
@@ -75,7 +69,6 @@ struct CreateNewCenter: View {
                             TextField("Phone", text: $centerPhone)
                         }
                     }
-                     
                     //parte bottoni
                     VStack {
                         HStack {
@@ -96,7 +89,7 @@ struct CreateNewCenter: View {
                             .cornerRadius(40)
                             .padding(.horizontal, 20)
                         }
-                        .padding(.top, 400)
+                        .padding(.top, 470)
                     //fine parte bottoni
                     .navigationBarTitle("")
                     .navigationBarItems(leading: Text("Create New Center")
@@ -107,31 +100,49 @@ struct CreateNewCenter: View {
             }
         }
     }
+    
+    //funzione per creare un nuovo centro
+    private func createNewCenter(name: String, email: String, website: String, phone: String) {
+            let userID = Auth.auth().currentUser!.uid
+            let db = Firestore.firestore()
+            var ref: DocumentReference? = nil
+            ref = db.collection("Centers").addDocument(data: [
+                "Name": name,
+                "Email": email,
+                "Website": website,
+                "Phone": phone,
+                "Owner": userID,
+                "Code": randomString(length: 5)
+            ]) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added with ID: \(ref!.documentID)")
+                    //cambia il valore della variabile with_center
+                    //per aggiornare la dashboard con il nuovo centro scaricato
+                    with_center = true
+                }
+            }
+    }
+    
+    //per generare un codice per lo studio
+    //ovviamente non andrebbe fatto cosi
+    func randomString(length: Int) -> String {
+      let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+      return String((0..<length).map{ _ in letters.randomElement()! })
+    }
 }
 
-//funzione prova firebase da cancellare
-private func createNewCenter(name: String, email: String, website: String, phone: String) {
-        // [START add_ada_lovelace]
-        // Add a new document with a generated ID+
-        let db = Firestore.firestore()
-        var ref: DocumentReference? = nil
-        ref = db.collection("Centers").addDocument(data: [
-            "Name": name,
-            "Email": email,
-            "Website": website,
-            "Phone": phone
-        ]) { err in
-            if let err = err {
-                print("Error adding document: \(err)")
-            } else {
-                print("Document added with ID: \(ref!.documentID)")
-            }
-        }
-        // [END add_ada_lovelace]
-    }
 
+
+/*
+ NON SO COME FARE FUNZIONARE LA PREVIEW QUANDO C'è UNA VARIABILE
+ BINDING QUINDI LA COMMENTO
 struct CreateNewCenter_Previews: PreviewProvider {
+    @Binding var with_center: Bool
+    
     static var previews: some View {
         CreateNewCenter()
     }
 }
+ */

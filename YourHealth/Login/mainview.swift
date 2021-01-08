@@ -6,6 +6,12 @@
 //
 
 import SwiftUI
+import FirebaseCore
+import Firebase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+
+
 struct mainview: View {
     @State private var selected = 0
 
@@ -102,7 +108,16 @@ struct mainview: View {
         .edgesIgnoringSafeArea(.all)
         .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
         }
+        .onAppear{LogOut()}
     }
+    
+    private func LogOut() {
+        try! Auth.auth().signOut()
+        UserDefaults.standard.set(false, forKey: "status")
+        NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+    }
+
+    
 }
 
 struct mainview_Previews: PreviewProvider {
