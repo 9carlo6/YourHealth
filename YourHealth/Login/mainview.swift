@@ -36,14 +36,6 @@ struct mainview: View {
 
             ZStack{
       VStack{
-        Text("if you already have an account")
-            .font(.subheadline)
-        NavigationLink(destination: Login().environmentObject(SessionStore())) {
-        Text("Sing In")
-            .fontWeight(.semibold)
-            .font(.title)
-            
-        }
         Text("Who are you?")
             .fontWeight(.medium)
             .multilineTextAlignment(.center)
@@ -55,7 +47,7 @@ struct mainview: View {
             
             HStack {
                 //per eliminare back add navigationBarBackButtonHidden(true)
-                NavigationLink(destination: LoginPage()) {
+                NavigationLink(destination: Login()) {
                 Text("User")
                     .fontWeight(.semibold)
                     .foregroundColor(Color(red: 56/255, green: 55/255, blue: 64/255))
@@ -74,7 +66,7 @@ struct mainview: View {
 
         
             HStack {
-                NavigationLink(destination: LoginPageSpecialist()) {
+                NavigationLink(destination: Login()) {
                 Text("Specialist")
                     .fontWeight(.semibold)
                     .foregroundColor(Color(red: 56/255, green: 55/255, blue: 64/255))

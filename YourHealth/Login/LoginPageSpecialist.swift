@@ -12,14 +12,6 @@ struct LoginPageSpecialist: View {
             UITableView.appearance().backgroundColor = .clear
         }
     
-    @EnvironmentObject var session: SessionStore
-    
-
-    func getUser () {
-          session.listen()
-      }
-    
-    
     //colore per la tab view
     @State var tabColor: UIColor = UIColor.init(red: 255/255, green: 226/255, blue: 226/255,alpha: 0.0)
     //colore per la navigation view

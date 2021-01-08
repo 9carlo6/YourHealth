@@ -30,177 +30,198 @@ struct ContentView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var name = ""
     
-    @EnvironmentObject var session: SessionStore
     
-    func getUser () {
-          session.listen()
-      }
     
     var body: some View{
         
-        Group {
-              if (session.session != nil) {
-                Text((session.session?.email!)!)
-                Button(action: {
-                    let firebaseAuth = Auth.auth()
-                    do {
-                      try firebaseAuth.signOut()
-                    } catch let signOutError as NSError {
-                      print ("Error signing out: %@", signOutError)
-                    }
-                 }) {
-                    Text("Logut")
-                        .fontWeight(.semibold)
-                        .font(.title)
-                }
-              } else {
-                TabView{
-                    //questo è quello che si vede all'interno
-                    //della navigation view Dashboard
-                    NavigationView{
-                        ZStack{
-                            navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                            Image("lookingatthephone")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 300.0, height: 100.0)
-                                .padding(.bottom, 180.0)
-                            
-                            //parte bottoni
-                            VStack {
-                                HStack {
-                                    NavigationLink(destination: JoinCenterView()) {
-                                    Text("Join a center")
-                                        .fontWeight(.semibold)
-                                        .font(.title)
-                                    }
-                                    
-                                }
-                                .frame(minWidth: 0, maxWidth: .infinity)
-                                .padding()
-                                .foregroundColor(.black)
-                                .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
-                                .cornerRadius(40)
-                                .padding(.horizontal, 20)
-                            
-                 
-                            
-                                HStack {
-                                    NavigationLink(destination: CreateNewCenter()) {
-                                    Text("Create a new center")
-                                        .fontWeight(.semibold)
-                                        .font(.title)
-                                    
-                                    }
-                                    
-                                }
-                                .frame(minWidth: 0, maxWidth: .infinity)
-                                .padding()
-                                .foregroundColor(.black)
-                                .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
-                                .cornerRadius(40)
-                                .padding(.horizontal, 20)
-                             
+        TabView{
+            //questo è quello che si vede all'interno
+            //della navigation view Dashboard
+            NavigationView{
+                ZStack{
+                    navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                    Image("lookingatthephone")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 300.0, height: 100.0)
+                        .padding(.bottom, 180.0)
+                    
+                    //parte bottoni
+                    VStack {
+                        HStack {
+                            NavigationLink(destination: JoinCenterView()) {
+                            Text("Join a center")
+                                .fontWeight(.semibold)
+                                .font(.title)
                             }
-                            .padding(.top, 400)
-                                
-                            //fine parte bottoni
-                            .navigationBarTitle("")
-                            .navigationBarItems(leading: Text("Dashboard")
-                                                    .font(.largeTitle)
-                                                    .bold())
+                            
                         }
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .padding()
+                        .foregroundColor(.black)
+                        .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
+                        .cornerRadius(40)
+                        .padding(.horizontal, 20)
+                    
+         
+                    
+                        HStack {
+                            NavigationLink(destination: CreateNewCenter()) {
+                            Text("Create a new center")
+                                .fontWeight(.semibold)
+                                .font(.title)
+                            
+                            }
+                            
+                        }
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .padding()
+                        .foregroundColor(.black)
+                        .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
+                        .cornerRadius(40)
+                        .padding(.horizontal, 20)
+                     
                     }
-                    .tabItem() {
-                        Image(systemName: "doc.circle.fill")
-                        Text("Dashboard")
-
-                    }
-                    //questo è quello che si vede all'interno
-                    //della navigation view Appointments
-                    NavigationView{
-                        ZStack{
-                            navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                            Text("You are in Appointments")
-                                .navigationBarTitle("")
-                                .navigationBarItems(leading: Text("Appointments")
-                                                        .font(.largeTitle)
-                                                        .bold()
-                                )
-                        }
-                    }
-                        .tabItem {
-                            Image(systemName: "calendar.circle.fill")
-                            Text("Appointments")
-                        }
-                    //questo è quello che si vede all'interno
-                    //della navigation view Chats
-                    NavigationView{
-                        ZStack{
-                            navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                            Text("You are in Notifications")
-                                .navigationBarTitle("")
-                                .navigationBarItems(leading: Text("Notifications")
-                                                        .font(.largeTitle)
-                                                        .bold()
-                                                    ,trailing: Button(action: {
-
-                                                    }, label: { Image(systemName: "magnifyingglass")
-                                                    })
-                                            )
-                        }
-                    }
-                        .tabItem {
-                            Image(systemName: "message.circle.fill")
-                            Text("Notifications")
-                        }
-                    //questo è quello che si vede all'interno
-                    //della navigation view Specialists
-                    NavigationView{
-                        ZStack{
-                            Text("You are in Specialist")
-                            navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                                .navigationBarTitle("")
-                                .navigationBarItems(leading: Text("Specialist")
-                                                        .font(.largeTitle)
-                                                        .bold()
-                                )
-                        }
-                    }
-                        .tabItem {
-                            Image(systemName: "asterisk.circle.fill")
-                            Text("Specialist")
-                        }
-                    //questo è quello che si vede all'interno
-                    //della navigation view Settings
-                    NavigationView{
-                        ZStack{
-                            Text("You are in Settings")
-                            navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                                .navigationBarTitle("")
-                                .navigationBarItems(leading: Text("Settings")
-                                                        .font(.largeTitle)
-                                                        .bold()
-                                )
-                        }
-                    }
-                        .tabItem {
-                            Image(systemName: "gearshape.fill")
-                            Text("Settings")
-                        }
+                    .padding(.top, 400)
+                        
+                    //fine parte bottoni
+                    
                 }
-                .accentColor(.black)
-                .onAppear() {
-                    UITabBar.appearance().barTintColor = tabColor
-                       }
-              }
-            }.onAppear(perform: getUser)
+                .navigationBarTitle("")
+                .navigationBarItems(leading: Text("Dashboard")
+                                        .font(.largeTitle)
+                                        .bold())
+                
+            }
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
+            .tabItem() {
+                Image(systemName: "doc.circle.fill")
+                Text("Dashboard")
+
+            }
+            //questo è quello che si vede all'interno
+            //della navigation view Appointments
+            NavigationView{
+                ZStack{
+                    navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                    Text("You are in Appointments")
+                        
+                }
+                .navigationBarTitle("")
+                .navigationBarItems(leading: Text("Appointments")
+                                        .font(.largeTitle)
+                                        .bold()
+                )
+            }
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
+            .tabItem {
+                Image(systemName: "calendar.circle.fill")
+                Text("Appointments")
+            }
+            //questo è quello che si vede all'interno
+            //della navigation view Chats
+            NavigationView{
+                ZStack{
+                    navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                    Text("You are in Notifications")
+                        
+                }
+                .navigationBarTitle("")
+                .navigationBarItems(leading: Text("Notifications")
+                                        .font(.largeTitle)
+                                        .bold()
+                                    ,trailing: Button(action: {
+                                        //qua va l'azione
+
+                                    }, label: { Image(systemName: "magnifyingglass")
+                                    })
+                            )
+            }
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
+            .tabItem {
+                Image(systemName: "message.circle.fill")
+                Text("Notifications")
+            }
+            //questo è quello che si vede all'interno
+            //della navigation view Specialists
+            NavigationView{
+                ZStack{
+                    Text("You are in Specialist")
+                    navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                }
+                .navigationBarTitle("")
+                .navigationBarItems(leading: Text("Specialist")
+                                        .font(.largeTitle)
+                                        .bold()
+                )
+            }
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
+            .tabItem {
+                Image(systemName: "asterisk.circle.fill")
+                Text("Specialist")
+            }
+            //questo è quello che si vede all'interno
+            //della navigation view Settings
+            NavigationView{
+                ZStack{
+                    
+                    navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                    //parte da cancellare serve per fare il logout
+                    VStack{
+                        
+                        Button(action: {
+                            
+                            try! Auth.auth().signOut()
+                            UserDefaults.standard.set(false, forKey: "status")
+                            NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+                            
+                        }) {
+                            
+                            Text("Logout")
+                                .foregroundColor(.white)
+                                .padding(.vertical)
+                                .frame(width: UIScreen.main.bounds.width - 50)
+                        }
+                        .frame(minWidth: 0, maxWidth: 100, minHeight: 0, maxHeight: 30)
+                        .padding()
+                        .foregroundColor(.black)
+                        .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
+                        .cornerRadius(40)
+                        .padding(.top, 25)
+                    }
+                }
+                .navigationBarTitle("")
+                .navigationBarItems(leading: Text("Settings")
+                                        .font(.largeTitle)
+                                        .bold()
+                )
+            }
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
+            .tabItem {
+                Image(systemName: "gearshape.fill")
+                Text("Settings")
+            }
+        }
+        .navigationBarTitle("")
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
+        .accentColor(.black)
+        .onAppear() {
+            UITabBar.appearance().barTintColor = tabColor
+               }
+      }
+           
+        
         
     }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environmentObject(SessionStore())
+        ContentView()
     }
 }
