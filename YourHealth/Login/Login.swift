@@ -431,7 +431,7 @@ struct SignUp : View {
   
   func register(){
       
-      if self.email != "" || self.city != "" || self.profession != "" || self.name != "" || self.surname != "" || self.alboid != ""{
+      if self.email != "" || self.city != "" || self.profession != "" || self.name != "" || self.alboid != ""{
           
           if self.pass == self.repass{
               
