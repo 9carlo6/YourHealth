@@ -253,7 +253,6 @@ struct SignUp : View {
   
   @State var color = Color.black.opacity(0.7)
   @State var name = ""
-  @State var surname = ""
   @State var email = ""
   @State var pass = ""
   @State var repass = ""
@@ -288,16 +287,10 @@ struct SignUp : View {
                           .foregroundColor(self.color)
                           .padding(.top, 35)
                     
-                    TextField("Name", text: self.$name)
+                    TextField("Name and Surname", text: self.$name)
                     .autocapitalization(.none)
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 4).stroke(self.name != "" ? Color("Color") : self.color,lineWidth: 2))
-                    .padding(.top, 25)
-                    
-                    TextField("Surname", text: self.$surname)
-                    .autocapitalization(.none)
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 4).stroke(self.surname != "" ? Color("Color") : self.color,lineWidth: 2))
                     .padding(.top, 25)
                     
                       TextField("Email", text: self.$email)
@@ -367,6 +360,12 @@ struct SignUp : View {
                       .padding()
                       .background(RoundedRectangle(cornerRadius: 4).stroke(self.repass != "" ? Color("Color") : self.color,lineWidth: 2))
                       .padding(.top, 25)
+                        
+                        TextField("Address", text: self.$address)
+                        .autocapitalization(.none)
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.address != "" ? Color("Color") : self.color,lineWidth: 2))
+                        .padding(.top, 25)
                       
                     TextField("City", text: self.$city)
                     .autocapitalization(.none)
@@ -446,7 +445,7 @@ struct SignUp : View {
                   }
                   
                   print("success")
-                createNewSP(email: email, city: city, profession: profession, name: name, surname: surname, alboid: alboid)
+                createNewSP(email: email, city: city, profession: profession, name: name, address: address, alboid: alboid)
                   UserDefaults.standard.set(true, forKey: "status")
                   NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
               }
@@ -464,12 +463,12 @@ struct SignUp : View {
       }
     
 //funzione per creare specialista
-     func createNewSP(email: String, city: String, profession: String, name: String, surname: String, alboid: String) {
+     func createNewSP(email: String, city: String, profession: String, name: String, address: String, alboid: String) {
         let db = Firestore.firestore()
         var ref: DocumentReference? = nil
         ref = db.collection("Specialists").addDocument(data: [
-            "Name": name,
-            "Surname": surname,
+            "Name and Surname": name,
+            "Address": address,
             "Email": email,
             "City": city,
             "Profession": profession,
