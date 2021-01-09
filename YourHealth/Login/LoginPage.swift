@@ -24,8 +24,6 @@ struct LoginPage: View {
     @State var name = ""
     
     var body: some View {
-        
-        NavigationView{
             
         ZStack{
             //per il colore di background di tutta la view
@@ -90,7 +88,7 @@ struct LoginPage: View {
                     }
 
             }
-        }
+        
     }
 }
 
