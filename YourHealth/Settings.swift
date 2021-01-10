@@ -75,7 +75,7 @@ struct Settings: View {
                           
                       
                       Text("Giulia Giordano")
-                          .font(.system(.title2, design: .rounded))
+                          .font(.system(.title))
                           .fontWeight(.black)
                         
                           
@@ -181,20 +181,18 @@ struct Settings: View {
                   .background(navColor.edgesIgnoringSafeArea(.all))
                   
                   HStack{
+                    ZStack{
+                        Image("logout")
+                            .resizable()
+                            .frame(width: 25, height: 25, alignment: .leading)
+                            
+                            .frame(width:17, height: 20)
+                            //.padding(.leading, 4)
+                    }
+                    .frame(width: 40, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .background(Color("Darkpink"))
+                    .cornerRadius(15)
                       
-                      
-                      
-                       ZStack{
-                           Image("logout")
-                               .resizable()
-                               .frame(width: 25, height: 25, alignment: .leading)
-                               
-                               .frame(width:17, height: 20)
-                               //.padding(.leading, 4)
-                       }
-                       .frame(width: 40, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                       .background(Color("Darkpink"))
-                       .cornerRadius(15)
                       
                     Button(action: {
                         
@@ -210,7 +208,7 @@ struct Settings: View {
                         Text("Logout")
                             .foregroundColor(.black)
                             .padding(.vertical)
-                            .frame(width: UIScreen.main.bounds.width - 50)
+                            
                     }
                   }
                   .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)

@@ -248,11 +248,8 @@ struct ContentView: View {
                         */
                     }
                 }
-                .navigationBarTitle("")
-                .navigationBarItems(leading: Text("Settings")
-                                        .font(.largeTitle)
-                                        .bold()
-                )
+                
+                
             }
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
