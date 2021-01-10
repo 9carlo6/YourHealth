@@ -18,18 +18,13 @@ struct JoinCenterView: View {
     @State var tabColor: UIColor = UIColor.init(red: 255/255, green: 226/255, blue: 226/255,alpha: 0.0)
     //colore per la navigation view
     @State var navColor: Color = Color.init(red: 255/255, green: 240/255, blue: 240/255)
+    //colore per la navigation view versione UI
+    @State var navColorUI: UIColor = UIColor.init(red: 255/255, green: 240/255, blue: 240/255,alpha: 0.0)
     //string per form
     @State private var code = ""
     
-    //per nascondere il bottone di ritorno
-    @State var navigationBarBackButtonHidden = true
-    
     //per tornare indietro
     @Environment(\.presentationMode) var presentationMode
-    @State var name = ""
-    
-    //per l'allert
-    @State private var showingAlert = false
     
     //variabile necessaria per aggiornare il conenuto della dashboard
     @Binding var with_center: Bool
@@ -39,6 +34,7 @@ struct JoinCenterView: View {
             ZStack{
                 //per il colore di background di dello ZStack
                 navColor.edgesIgnoringSafeArea(.all)
+                
                 Form {
                     Section(header: Text("Enter the code you recived")
                                 .fontWeight(.light)
@@ -47,6 +43,10 @@ struct JoinCenterView: View {
                         TextField("Code", text: $code)
                     }
                 }
+                .onAppear {
+                    UITableView.appearance().backgroundColor = navColorUI
+                 }
+                
                 //parte bottoni
                 VStack {
                     HStack {
@@ -76,8 +76,6 @@ struct JoinCenterView: View {
                 
             }
         }
-        
-        
     }
     
     //Questa funzione serve per capire se l'utente ha un centro.
@@ -100,7 +98,6 @@ struct JoinCenterView: View {
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
-                    self.with_center = true
                     //se l'utente connesso non è proprietario di nessun centro
                     //allora bisogna vedere se il centro con il codice esiste
                     if(querySnapshot!.documents.isEmpty){
@@ -111,7 +108,6 @@ struct JoinCenterView: View {
                                 if let err = err {
                                     print("Error getting documents: \(err)")
                                 } else {
-                                    self.with_center = true
                                     //se non esiste nessun centro allora il flag
                                     //with_center = false
                                     //e dovrebbe uscire un errore
@@ -122,8 +118,9 @@ struct JoinCenterView: View {
                                         //si modifica il centro aggiungendo lo specialista
                                         for document in querySnapshot!.documents {
                                             print("\(document.documentID) => \(document.data())")
-                                            db.collection("Centers").document(document.documentID).setData(["Specialists" : [userID]], merge: true)
+                                            db.collection("Centers").document(document.documentID).updateData(["Specialists.\(userID)" : userID])
                                         }
+                                        self.with_center = true
                                     }
                                 }
                             }
