@@ -68,8 +68,8 @@ struct Home : View {
 struct Login2 : View {
   
   @State var color = Color.black.opacity(0.7)
-  @State var email = ""
-  @State var pass = ""
+  @State var email = "prova10@gmail.com"
+  @State var pass = "password"
   @State var visible = false
   @Binding var show : Bool
   @State var alert = false

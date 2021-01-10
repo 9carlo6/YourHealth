@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google
+ * Copyright 2019 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,20 @@
  * limitations under the License.
  */
 
-#import <Foundation/Foundation.h>
+#import "FirebaseAuth/Sources/Backend/RPC/Proto/Phone/FIRAuthProtoStartMFAPhoneResponseInfo.h"
 
-#import "GoogleUtilities/Logger/Public/GoogleUtilities/GULLogger.h"
+NS_ASSUME_NONNULL_BEGIN
 
-extern NSString *const kGULNetworkErrorDomain;
+@implementation FIRAuthProtoStartMFAPhoneResponseInfo
 
-/// The logger service for GULNetwork.
-extern GULLoggerService kGULLoggerNetwork;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
+  self = [super init];
+  if (self) {
+    _sessionInfo = [dictionary[@"sessionInfo"] copy];
+  }
+  return self;
+}
+
+@end
+
+NS_ASSUME_NONNULL_END
