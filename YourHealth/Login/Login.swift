@@ -63,36 +63,7 @@ struct Home : View {
 
 //questa non viene utilizzata e quindi si puo cancellare
 
-struct Homescreen : View {
-  
-  var body: some View{
-      
-      VStack{
-          
-          Text("Logged successfully")
-              .font(.title)
-              .fontWeight(.bold)
-              .foregroundColor(Color.black.opacity(0.7))
-          
-          Button(action: {
-              
-              try! Auth.auth().signOut()
-              UserDefaults.standard.set(false, forKey: "status")
-              NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
-              
-          }) {
-              
-              Text("Log out")
-                  .foregroundColor(.white)
-                  .padding(.vertical)
-                  .frame(width: UIScreen.main.bounds.width - 50)
-          }
-          .background(Color("Color"))
-          .cornerRadius(10)
-          .padding(.top, 25)
-      }
-  }
-}
+
 
 struct Login2 : View {
   
@@ -281,9 +252,14 @@ struct Login2 : View {
 struct SignUp : View {
   
   @State var color = Color.black.opacity(0.7)
+  @State var name = ""
   @State var email = ""
   @State var pass = ""
   @State var repass = ""
+  @State var address = ""
+  @State var city = ""
+  @State var profession = ""
+  @State var alboid = ""
   @State var visible = false
   @State var revisible = false
   @Binding var show : Bool
@@ -296,27 +272,27 @@ struct SignUp : View {
   @State var navColor: Color = Color.init(red: 255/255, green: 240/255, blue: 240/255)
   
   var body: some View{
-      
+   
       ZStack{
         navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-          
           ZStack(alignment: .topLeading) {
               
               GeometryReader{_ in
                   
                   VStack{
-                      
-                    Image("logo")
-                      .resizable()
-                      .scaledToFill()
-                      .frame(width: 200, height: 200)
-                      
-                      Text("Login to your account")
+                      ScrollView{
+                      Text("Register new account")
                           .font(.title)
                           .fontWeight(.bold)
                           .foregroundColor(self.color)
                           .padding(.top, 35)
-                      
+                    
+                    TextField("Name and Surname", text: self.$name)
+                    .autocapitalization(.none)
+                    .padding()
+                    .background(RoundedRectangle(cornerRadius: 4).stroke(self.name != "" ? Color("Color") : self.color,lineWidth: 2))
+                    .padding(.top, 25)
+                    
                       TextField("Email", text: self.$email)
                       .autocapitalization(.none)
                       .padding()
@@ -384,9 +360,34 @@ struct SignUp : View {
                       .padding()
                       .background(RoundedRectangle(cornerRadius: 4).stroke(self.repass != "" ? Color("Color") : self.color,lineWidth: 2))
                       .padding(.top, 25)
+                        
+                        TextField("Address", text: self.$address)
+                        .autocapitalization(.none)
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.address != "" ? Color("Color") : self.color,lineWidth: 2))
+                        .padding(.top, 25)
                       
+                    TextField("City", text: self.$city)
+                    .autocapitalization(.none)
+                    .padding()
+                    .background(RoundedRectangle(cornerRadius: 4).stroke(self.city != "" ? Color("Color") : self.color,lineWidth: 2))
+                    .padding(.top, 25)
+                    
+                    TextField("Profession", text: self.$profession)
+                    .autocapitalization(.none)
+                    .padding()
+                    .background(RoundedRectangle(cornerRadius: 4).stroke(self.profession != "" ? Color("Color") : self.color,lineWidth: 2))
+                    .padding(.top, 25)
+                        
+                    TextField("Aldo Code", text: self.$alboid)
+                        .autocapitalization(.none)
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.alboid != "" ? Color("Color") : self.color,lineWidth: 2))
+                        .padding(.top, 25)
+                        
+                        
+                    
                       Button(action: {
-                          
                           self.register()
                       }) {
                           
@@ -423,13 +424,14 @@ struct SignUp : View {
               
               ErrorView(alert: self.$alert, error: self.$error)
           }
+        }
       }
-      .navigationBarBackButtonHidden(true)
+    
   }
   
   func register(){
       
-      if self.email != ""{
+      if self.email != "" || self.city != "" || self.profession != "" || self.name != "" || self.alboid != ""{
           
           if self.pass == self.repass{
               
@@ -443,7 +445,7 @@ struct SignUp : View {
                   }
                   
                   print("success")
-                  
+                createNewSP(email: email, city: city, profession: profession, name: name, address: address, alboid: alboid)
                   UserDefaults.standard.set(true, forKey: "status")
                   NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
               }
@@ -459,6 +461,28 @@ struct SignUp : View {
           self.error = "Please fill all the contents properly"
           self.alert.toggle()
       }
+    
+//funzione per creare specialista
+     func createNewSP(email: String, city: String, profession: String, name: String, address: String, alboid: String) {
+        let db = Firestore.firestore()
+        var ref: DocumentReference? = nil
+        ref = db.collection("Specialists").addDocument(data: [
+            "Name and Surname": name,
+            "Address": address,
+            "Email": email,
+            "City": city,
+            "Profession": profession,
+            "AlboCode": alboid
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+                //cambia il valore della variabile with_center
+                //per aggiornare la dashboard con il nuovo centro scaricato
+            }
+        }
+    }
   }
 }
 
@@ -471,11 +495,9 @@ struct ErrorView : View {
   
   var body: some View{
       
-      GeometryReader{_ in
-          
-          VStack{
-              
-              HStack{
+      GeometryReader{ geometry in
+        VStack(alignment: .center){
+            HStack(alignment: .center){
                   
                   Text(self.error == "RESET" ? "Message" : "Error")
                       .font(.title)
@@ -483,7 +505,7 @@ struct ErrorView : View {
                       .foregroundColor(self.color)
                   
                   Spacer()
-              }
+            }
               .padding(.horizontal, 25)
               
               Text(self.error == "RESET" ? "Password reset link has been sent successfully" : self.error)
@@ -510,10 +532,11 @@ struct ErrorView : View {
               .padding(.top, 25)
               
           }
-          .padding(.vertical, 120)
+        .padding(.all)
           .background(Color.white)
           .cornerRadius(15)
       }
+      .padding(.all)
       .background(Color.black.opacity(0.35).edgesIgnoringSafeArea(.all))
   }
 }
