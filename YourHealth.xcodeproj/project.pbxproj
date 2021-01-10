@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		1018992325A5E0260007F314 /* ListaSpecialisti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1018992225A5E0260007F314 /* ListaSpecialisti.swift */; };
 		1018992625A5F5FE0007F314 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1018992525A5F5FE0007F314 /* Settings.swift */; };
+		1018993F25A9C0170007F314 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1018993E25A9C0160007F314 /* GoogleService-Info.plist */; };
 		1D3494DB9B0B6F1D11D036E7 /* Pods_YourHealth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8046F541A97932FE9C088347 /* Pods_YourHealth.framework */; };
 		6A982C1D259BD655005D707B /* mainview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A982C1C259BD655005D707B /* mainview.swift */; };
 		6A982C20259BDFD2005D707B /* LoginPageSpecialist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A982C1F259BDFD2005D707B /* LoginPageSpecialist.swift */; };
 		6AD36C982594BD6F00281384 /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD36C972594BD6F00281384 /* LoginPage.swift */; };
-		7B39721125A7139D006A7060 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B39721025A7139D006A7060 /* GoogleService-Info.plist */; };
 		7B642D3025A73180009F3171 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B642D2F25A73180009F3171 /* Login.swift */; };
 		7B642DB925A8570C009F3171 /* CreateNewCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B642DB825A8570C009F3171 /* CreateNewCenter.swift */; };
 		7B9BF6392598A69800C55398 /* JoinCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9BF6382598A69800C55398 /* JoinCenterView.swift */; };
@@ -30,11 +30,11 @@
 /* Begin PBXFileReference section */
 		1018992225A5E0260007F314 /* ListaSpecialisti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaSpecialisti.swift; sourceTree = "<group>"; };
 		1018992525A5F5FE0007F314 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		1018993E25A9C0160007F314 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4B8FFBF2B6CF602A18E5C4EE /* Pods-YourHealth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourHealth.release.xcconfig"; path = "Target Support Files/Pods-YourHealth/Pods-YourHealth.release.xcconfig"; sourceTree = "<group>"; };
 		6A982C1C259BD655005D707B /* mainview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainview.swift; sourceTree = "<group>"; };
 		6A982C1F259BDFD2005D707B /* LoginPageSpecialist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageSpecialist.swift; sourceTree = "<group>"; };
 		6AD36C972594BD6F00281384 /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
-		7B39721025A7139D006A7060 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7B642D2F25A73180009F3171 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		7B642DB825A8570C009F3171 /* CreateNewCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewCenter.swift; sourceTree = "<group>"; };
 		7B9BF6382598A69800C55398 /* JoinCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinCenterView.swift; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 				7B642DB825A8570C009F3171 /* CreateNewCenter.swift */,
 				7B9BF6382598A69800C55398 /* JoinCenterView.swift */,
 				1018992525A5F5FE0007F314 /* Settings.swift */,
-				7B39721025A7139D006A7060 /* GoogleService-Info.plist */,
+				1018993E25A9C0160007F314 /* GoogleService-Info.plist */,
 				7B9BF646259B4E1D00C55398 /* Types.swift */,
 				7BCC47442591F03B001AB0E3 /* Assets.xcassets */,
 				7BCC47492591F03B001AB0E3 /* LaunchScreen.storyboard */,
@@ -200,7 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BCC474B2591F03B001AB0E3 /* LaunchScreen.storyboard in Resources */,
-				7B39721125A7139D006A7060 /* GoogleService-Info.plist in Resources */,
+				1018993F25A9C0170007F314 /* GoogleService-Info.plist in Resources */,
 				7BCC47482591F03B001AB0E3 /* Preview Assets.xcassets in Resources */,
 				7BCC47452591F03B001AB0E3 /* Assets.xcassets in Resources */,
 			);

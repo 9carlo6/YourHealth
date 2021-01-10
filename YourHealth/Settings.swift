@@ -4,19 +4,23 @@
 //
 //  Created by conteangelo on 06/01/2021.
 //
-
+import SwiftUI
+import FirebaseCore
+import Firebase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 import SwiftUI
 
 struct Settings: View {
     
     @Environment(\.presentationMode) var presentationMode
 
+
     
-    private var displayOrder = ["Alphabetical", "Show Favorite First"]
+    //variabile necessaria per aggiornare il conenuto della dashboard
+    @Binding var with_center: Bool
     
-    @State private var selectedOrder = 0
-    
-    init(){
+    /*init(){
         let navBarAppearance = UINavigationBarAppearance()
         
         navBarAppearance.backgroundColor = UIColor.init(Color("LightPink"))
@@ -46,7 +50,7 @@ struct Settings: View {
        
         
         
-    }
+    }*/
     
     
     
@@ -55,7 +59,7 @@ struct Settings: View {
     
     var body: some View {
         
-        NavigationView{
+       // NavigationView{
             Form{
                
                Section{
@@ -192,7 +196,22 @@ struct Settings: View {
                        .background(Color("Darkpink"))
                        .cornerRadius(15)
                       
-                       Text("Log out")
+                    Button(action: {
+                        
+                        try! Auth.auth().signOut()
+                        UserDefaults.standard.set(false, forKey: "status")
+                        NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+                        //se fa il logout questa variabile
+                        //deve essere impostata a false
+                        self.with_center = false
+                        
+                    }) {
+                        
+                        Text("Logout")
+                            .foregroundColor(.black)
+                            .padding(.vertical)
+                            .frame(width: UIScreen.main.bounds.width - 50)
+                    }
                   }
                   .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                   
@@ -210,13 +229,13 @@ struct Settings: View {
              
              .navigationBarTitle("Settings")
              .background(navColor.edgesIgnoringSafeArea(.all))
-        }
+       // }
         
     }
 }
 
-struct Settings_Previews: PreviewProvider {
+/*struct Settings_Previews: PreviewProvider {
     static var previews: some View {
         Settings()
     }
-}
+}*/

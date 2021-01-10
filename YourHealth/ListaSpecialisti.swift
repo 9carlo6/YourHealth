@@ -56,7 +56,7 @@ struct ListaSpecialisti: View {
     var body: some View {
         ZStack{
             
-            NavigationView{
+            //NavigationView{
                 
                 VStack(alignment: .leading){
                     Text("Discover the specialists who work at this center")
@@ -106,7 +106,7 @@ struct ListaSpecialisti: View {
                     
                     
                     
-                }
+               // }
                 
             
             }
