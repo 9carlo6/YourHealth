@@ -22,10 +22,6 @@ struct ContentView: View {
     //colore per la navigation view
     @State var navColor: Color = Color.init(red: 255/255, green: 240/255, blue: 240/255)
     
-    //variabile globale per capire se l'utente
-    //è autenticato o meno
-    var userSettings = UserSettings()
-    
     //per tornare indietro
     @Environment(\.presentationMode) var presentationMode
     
@@ -308,7 +304,7 @@ struct ContentView: View {
                                     //se non esiste nessun centro allora il flag
                                     //with_center = false
                                     if(querySnapshot!.documents.isEmpty){
-                                        print("ooooo aooo m puott")
+                                        print("l'utente non appartiene a nessun centro")
                                         self.with_center = false
                                     }else{
                                         //nel caso in vui esiste un centro

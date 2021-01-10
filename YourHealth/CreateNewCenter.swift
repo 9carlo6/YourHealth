@@ -17,6 +17,8 @@ struct CreateNewCenter: View {
     @State var tabColor: UIColor = UIColor.init(red: 255/255, green: 226/255, blue: 226/255,alpha: 0.0)
     //colore per la navigation view
     @State var navColor: Color = Color.init(red: 255/255, green: 240/255, blue: 240/255)
+    //colore per la navigation view versione UI
+    @State var navColorUI: UIColor = UIColor.init(red: 255/255, green: 240/255, blue: 240/255,alpha: 0.0)
     //string per form
     @State private var centerName = ""
     @State private var centerEmail = ""
@@ -28,12 +30,6 @@ struct CreateNewCenter: View {
     
     //per tornare indietro
     @Environment(\.presentationMode) var presentationMode
-    @State var name = ""
-    
-    //variabile globale per capire se l'utente
-    //è autenticato o meno
-    var userSettings = UserSettings()
-    
     
     var body: some View {
         ZStack{
@@ -69,6 +65,9 @@ struct CreateNewCenter: View {
                             TextField("Phone", text: $centerPhone)
                         }
                     }
+                    .onAppear {
+                        UITableView.appearance().backgroundColor = navColorUI
+                     }
                     //parte bottoni
                     VStack {
                         HStack {
