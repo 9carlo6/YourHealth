@@ -90,7 +90,7 @@ struct ContentView: View {
             }else{ //se non ha ancora un centro
                 NavigationView{
                     ZStack{
-                        navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                        navColor.edgesIgnoringSafeArea(.all)
                         Image("lookingatthephone")
                             .resizable()
                             .scaledToFill()
@@ -202,14 +202,9 @@ struct ContentView: View {
             //della navigation view Specialists
             NavigationView{
                 ZStack{
-                    Text("You are in Specialist")
-                    navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                    ListaSpecialisti()
                 }
-                .navigationBarTitle("")
-                .navigationBarItems(leading: Text("Specialist")
-                                        .font(.largeTitle)
-                                        .bold()
-                )
+                
             }
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
@@ -225,8 +220,10 @@ struct ContentView: View {
                     navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     //parte da cancellare serve per fare il logout
                     VStack{
+                        //Mettere il settings
+                        Settings(with_center: $with_center)
                         
-                        Button(action: {
+                        /*Button(action: {
                             
                             try! Auth.auth().signOut()
                             UserDefaults.standard.set(false, forKey: "status")
@@ -248,13 +245,11 @@ struct ContentView: View {
                         .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
                         .cornerRadius(40)
                         .padding(.top, 25)
+                        */
                     }
                 }
-                .navigationBarTitle("")
-                .navigationBarItems(leading: Text("Settings")
-                                        .font(.largeTitle)
-                                        .bold()
-                )
+                
+                
             }
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)

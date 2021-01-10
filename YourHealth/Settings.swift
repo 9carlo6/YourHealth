@@ -4,19 +4,23 @@
 //
 //  Created by conteangelo on 06/01/2021.
 //
-
+import SwiftUI
+import FirebaseCore
+import Firebase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 import SwiftUI
 
 struct Settings: View {
     
     @Environment(\.presentationMode) var presentationMode
 
+
     
-    private var displayOrder = ["Alphabetical", "Show Favorite First"]
+    //variabile necessaria per aggiornare il conenuto della dashboard
+    @Binding var with_center: Bool
     
-    @State private var selectedOrder = 0
-    
-    init(){
+    /*init(){
         let navBarAppearance = UINavigationBarAppearance()
         
         navBarAppearance.backgroundColor = UIColor.init(Color("LightPink"))
@@ -46,7 +50,7 @@ struct Settings: View {
        
         
         
-    }
+    }*/
     
     
     
@@ -55,135 +59,181 @@ struct Settings: View {
     
     var body: some View {
         
-        NavigationView{
-             Form{
-                
-                Section{
-                   
-                   VStack{
-                       
-                       //Mi servirebbe la parte del login
-                       Image("dottoressa1")
-                           .resizable()
-                           .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 100, alignment: .center)
-                           .cornerRadius(50)
-                           
-                           
-                       
-                       Text("Giulia Giordano")
-                           .font(.system(.title2, design: .rounded))
-                           .fontWeight(.black)
-                         
-                           
-                           
+       // NavigationView{
+            Form{
+               
+               Section{
+                  
+                  VStack{
                       
-                       Text("Benevento (BN), 29/03/1998")
-                           .font(.system(.body, design: .rounded))
-                           .foregroundColor(.black)
-                           .aspectRatio(contentMode: .fit)
-                       
-                       
-                       
-                   }.offset(x: 50, y: 0)
-                }
-                
-                .listRowBackground(navColor)
-                
-                
-                
-                
-                Section{
-                   HStack{
-                       Image("profile")
-                           .resizable()
-                           .frame(width: 25, height: 25, alignment: .leading)
-                           
-                           
-                       
-                       
-                       Picker(selection: $selectedOrder, label: Text("Account")) {
-                            ForEach(0..<displayOrder.count, id: \.self) {
-                                Text(self.displayOrder[$0])
-                                   
-                            }
-                        }
-                   }
+                      //Mi servirebbe la parte del login
+                      Image("dottoressa1")
+                          .resizable()
+                          .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 100, alignment: .center)
+                          .cornerRadius(50)
+                          
+                          
+                      
+                      Text("Giulia Giordano")
+                          .font(.system(.title))
+                          .fontWeight(.black)
+                        
+                          
+                          
+                     
+                      Text("Benevento (BN), 29/03/1998")
+                          .font(.system(.body, design: .rounded))
+                          .foregroundColor(.black)
+                          .aspectRatio(contentMode: .fit)
+                      
+                      
+                      
+                  }.offset(x: 50, y: 0)
+               }
+               
+               .listRowBackground(navColor)
+               
+               
+               
+               
+               Section{
                    
-                   HStack{
+                       HStack{
+                           
+                         
+                           ZStack{
+                               Image(systemName: "person.fill")
+                                   .resizable()
+                                   .frame(width: 25, height: 25, alignment: .leading)
+                                   
+                                   .frame(width:17, height: 20)
+                                   //.padding(.leading, 4)
+                           }
+                           .frame(width: 40, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                           .background(Color("Darkpink"))
+                           .cornerRadius(15)
+                              
+                              
+                          
+                          
+                           Text("Profile")
+                               
+                          
+                      }
+                       .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                       
+                       .listRowInsets(EdgeInsets())
+                       
+                       .background(navColor.edgesIgnoringSafeArea(.all))
+                       
+                       
+                   
+                   
+                   
+                  HStack{
+                   
+                   ZStack{
                        Image(systemName: "mail.fill")
-                           
-                       
-                       Picker(selection: $selectedOrder, label: Text("Notification")) {
-                            ForEach(0..<displayOrder.count, id: \.self) {
-                                Text(self.displayOrder[$0])
-                                   
-                            }
-                        }
-                   }
-                   
-                   
-                   HStack{
-                       Image("storage")
                            .resizable()
-                           .frame(width: 22, height: 22, alignment: .leading)
+                           .frame(width: 20, height: 20, alignment: .leading)
                            
-                       
-                       Picker(selection: $selectedOrder, label: Text("Data and Storage")) {
-                            ForEach(0..<displayOrder.count, id: \.self) {
-                                Text(self.displayOrder[$0])
-                                   
-                            }
-                        }
+                           .frame(width:17, height: 20)
+                           //.padding(.leading, 4)
                    }
-                   
-                   
-                   HStack{
-                       Image("help")
-                           .resizable()
-                           .frame(width: 25, height: 25, alignment: .leading)
+                   .frame(width: 40, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                   .background(Color("Darkpink"))
+                   .cornerRadius(15)
+                   //Image(systemName: "mail.fill")
                        
-                           
-                       
-                       Picker(selection: $selectedOrder, label: Text("Help")) {
-                            ForEach(0..<displayOrder.count, id: \.self) {
-                                Text(self.displayOrder[$0])
-                                   
-                            }
-                        }
-                   }
-                   
-                   HStack{
-                       
-                       
-                       Image("logout")
-                           .resizable()
-                           .frame(width: 25, height: 25, alignment: .leading)
-                       
-                           
-                       
-                       Picker(selection: $selectedOrder, label: Text("Log out")) {
-                            ForEach(0..<displayOrder.count, id: \.self) {
-                                Text(self.displayOrder[$0])
-                                   
-                            }
-                        }
-                   }
-                    
-                   
-                }
-                .listRowBackground(navColor)
-                
-            }
+                      
+                       Text("Notification")
+                  }
+                  .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                  
+                  .listRowInsets(EdgeInsets())
+                  
+                  .background(navColor.edgesIgnoringSafeArea(.all))
+                  
+                  
+                  
+                  
+                  HStack{
+                      
+                       ZStack{
+                           Image("help")
+                               .resizable()
+                               .frame(width: 25, height: 25, alignment: .leading)
+                               
+                               .frame(width:17, height: 20)
+                               //.padding(.leading, 4)
+                       }
+                       .frame(width: 40, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                       .background(Color("Darkpink"))
+                       .cornerRadius(15)
+                          
+                      
+                       Text("Help")
+                  }
+                  .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                  
+                  .listRowInsets(EdgeInsets())
+                  
+                  .background(navColor.edgesIgnoringSafeArea(.all))
+                  
+                  HStack{
+                    ZStack{
+                        Image("logout")
+                            .resizable()
+                            .frame(width: 25, height: 25, alignment: .leading)
+                            
+                            .frame(width:17, height: 20)
+                            //.padding(.leading, 4)
+                    }
+                    .frame(width: 40, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .background(Color("Darkpink"))
+                    .cornerRadius(15)
+                      
+                      
+                    Button(action: {
+                        
+                        try! Auth.auth().signOut()
+                        UserDefaults.standard.set(false, forKey: "status")
+                        NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+                        //se fa il logout questa variabile
+                        //deve essere impostata a false
+                        self.with_center = false
+                        
+                    }) {
+                        
+                        Text("Logout")
+                            .foregroundColor(.black)
+                            .padding(.vertical)
+                            
+                    }
+                  }
+                  .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                  
+                  .listRowInsets(EdgeInsets())
+                  
+                  .background(navColor.edgesIgnoringSafeArea(.all))
+                  
+               }
+               .listRowBackground(navColor)
+               .frame(maxWidth: .infinity, alignment: .leading)
+           
+               
+           
+           }
              
              .navigationBarTitle("Settings")
              .background(navColor.edgesIgnoringSafeArea(.all))
-        }
+       // }
         
     }
 }
 
-struct Settings_Previews: PreviewProvider {
+/*struct Settings_Previews: PreviewProvider {
     static var previews: some View {
         Settings()
     }
-}
+}*/
