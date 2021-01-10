@@ -300,7 +300,7 @@ struct ContentView: View {
                         //allora si controlla se l'utente
                         //fa parte di qualche centro ma non è
                         //il proprietario
-                        db.collection("Centers").whereField("Specialists", arrayContains: userID)
+                        db.collection("Centers").whereField("Specialists.\(userID)", isEqualTo: userID)
                             .getDocuments() { (querySnapshot, err) in
                                 if let err = err {
                                     print("Error getting documents: \(err)")
@@ -308,12 +308,12 @@ struct ContentView: View {
                                     //se non esiste nessun centro allora il flag
                                     //with_center = false
                                     if(querySnapshot!.documents.isEmpty){
+                                        print("ooooo aooo m puott")
                                         self.with_center = false
                                     }else{
                                         //nel caso in vui esiste un centro
                                         //nel quale è presente l'utente loggato
                                         //prendiamo i dati del centro
-                                        self.with_center = true
                                         for document in querySnapshot!.documents {
                                             print("\(document.documentID) => \(document.data())")
                                             let data = document.data()
@@ -324,6 +324,7 @@ struct ContentView: View {
                                             self.centerCode = data["Code"] as! String
                                             
                                         }
+                                        self.with_center = true
                                     }
                                 }
                             }

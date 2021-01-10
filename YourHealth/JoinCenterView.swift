@@ -100,7 +100,6 @@ struct JoinCenterView: View {
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
-                    self.with_center = true
                     //se l'utente connesso non è proprietario di nessun centro
                     //allora bisogna vedere se il centro con il codice esiste
                     if(querySnapshot!.documents.isEmpty){
@@ -111,7 +110,6 @@ struct JoinCenterView: View {
                                 if let err = err {
                                     print("Error getting documents: \(err)")
                                 } else {
-                                    self.with_center = true
                                     //se non esiste nessun centro allora il flag
                                     //with_center = false
                                     //e dovrebbe uscire un errore
@@ -122,8 +120,9 @@ struct JoinCenterView: View {
                                         //si modifica il centro aggiungendo lo specialista
                                         for document in querySnapshot!.documents {
                                             print("\(document.documentID) => \(document.data())")
-                                            db.collection("Centers").document(document.documentID).setData(["Specialists" : [userID]], merge: true)
+                                            db.collection("Centers").document(document.documentID).updateData(["Specialists.\(userID)" : userID])
                                         }
+                                        self.with_center = true
                                     }
                                 }
                             }
