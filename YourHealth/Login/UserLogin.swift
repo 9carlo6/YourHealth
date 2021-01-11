@@ -1,29 +1,30 @@
 //
-//  Login.swift
+//  UserLogin.swift
 //  YourHealth
 //
-//  Created by pannullocarlo on 07/01/2021.
+//  Created by pannullocarlo on 11/01/2021.
 //
+
 import SwiftUI
 import FirebaseCore
 import Firebase
 import FirebaseFirestore
 import FirebaseFirestoreSwift
-  
-struct Login: View {
-  var body: some View {
-      
-      Home()
-  }
+
+struct UserLogin: View {
+    var body: some View {
+        UserHome()
+    }
 }
 
-struct Login_Previews: PreviewProvider {
-  static var previews: some View {
-      Login()
-  }
+struct UserLogin_Previews: PreviewProvider {
+    static var previews: some View {
+        UserLogin()
+    }
 }
 
-struct Home : View {
+
+struct UserHome : View {
     
   @State var show = false
   @State var status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
@@ -34,19 +35,19 @@ struct Home : View {
               
               if self.status{
                   
-                  ContentView()
+                  UserContentView()
               }
               else{
                   
                   ZStack{
                       
-                      NavigationLink(destination: SignUp(show: self.$show), isActive: self.$show) {
+                      NavigationLink(destination: UserSignUp(show: self.$show), isActive: self.$show) {
                           
                           Text("")
                       }
                       .hidden()
                       
-                      Login2(show: self.$show)
+                    UserLogin2(show: self.$show)
                   }
               }
           }
@@ -68,7 +69,7 @@ struct Home : View {
 
 
 
-struct Login2 : View {
+struct UserLogin2 : View {
   
   @State var color = Color.black.opacity(0.7)
   @State var email = "prova10@gmail.com"
@@ -197,7 +198,7 @@ struct Login2 : View {
           
           if self.alert{
               
-              ErrorView(alert: self.$alert, error: self.$error)
+            UserErrorView(alert: self.$alert, error: self.$error)
           }
       }
   }
@@ -252,7 +253,7 @@ struct Login2 : View {
   }
 }
 
-struct SignUp : View {
+struct UserSignUp : View {
   
   @State var color = Color.black.opacity(0.7)
   @State var name = ""
@@ -363,32 +364,6 @@ struct SignUp : View {
                       .padding()
                       .background(RoundedRectangle(cornerRadius: 4).stroke(self.repass != "" ? Color("Color") : self.color,lineWidth: 2))
                       .padding(.top, 25)
-                        
-                        TextField("Address", text: self.$address)
-                        .autocapitalization(.none)
-                        .padding()
-                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.address != "" ? Color("Color") : self.color,lineWidth: 2))
-                        .padding(.top, 25)
-                      
-                    TextField("City", text: self.$city)
-                    .autocapitalization(.none)
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 4).stroke(self.city != "" ? Color("Color") : self.color,lineWidth: 2))
-                    .padding(.top, 25)
-                    
-                    TextField("Profession", text: self.$profession)
-                    .autocapitalization(.none)
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 4).stroke(self.profession != "" ? Color("Color") : self.color,lineWidth: 2))
-                    .padding(.top, 25)
-                        
-                    TextField("Aldo Code", text: self.$alboid)
-                        .autocapitalization(.none)
-                        .padding()
-                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.alboid != "" ? Color("Color") : self.color,lineWidth: 2))
-                        .padding(.top, 25)
-                        
-                        
                     
                       Button(action: {
                           self.register()
@@ -425,7 +400,7 @@ struct SignUp : View {
           
           if self.alert{
               
-              ErrorView(alert: self.$alert, error: self.$error)
+            UserErrorView(alert: self.$alert, error: self.$error)
           }
         }
       }
@@ -448,7 +423,7 @@ struct SignUp : View {
                   }
                   
                   print("success")
-                createNewSP(email: email, city: city, profession: profession, name: name, address: address, alboid: alboid)
+                createNewUser(email: email, name: name)
                   UserDefaults.standard.set(true, forKey: "status")
                   NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
               }
@@ -466,16 +441,12 @@ struct SignUp : View {
       }
     
 //funzione per creare specialista
-     func createNewSP(email: String, city: String, profession: String, name: String, address: String, alboid: String) {
+     func createNewUser(email: String, name: String) {
         guard let userID = Auth.auth().currentUser?.uid else { return }
         let db = Firestore.firestore()
-        db.collection("Specialists").document("\(userID)").setData([
+        db.collection("Users").document("\(userID)").setData([
             "Name and Surname": name,
-            "Address": address,
-            "Email": email,
-            "City": city,
-            "Profession": profession,
-            "AlboCode": alboid
+            "Email": email
         ]) { err in
             if let err = err {
                     print("Error writing document: \(err)")
@@ -487,7 +458,7 @@ struct SignUp : View {
 }
 
 
-struct ErrorView : View {
+struct UserErrorView : View {
   
   @State var color = Color.black.opacity(0.7)
   @Binding var alert : Bool

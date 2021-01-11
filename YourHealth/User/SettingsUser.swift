@@ -36,8 +36,8 @@ struct SettingsUser: View {
                       
                   
                   Text("Pippo Inzaghi")
-                      .font(.system(.title))
-                      .fontWeight(.black)
+                    .fontWeight(.semibold)
+                    .font(.title)
                     
                       
                       
@@ -107,7 +107,7 @@ struct SettingsUser: View {
                //Image(systemName: "mail.fill")
                    
                   
-                   Text("Notification")
+                   Text("Notifications")
               }
               .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
               

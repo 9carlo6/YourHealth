@@ -66,7 +66,7 @@ struct ContentView: View {
                             .padding(.bottom, 180)
                                 
                             VStack{
-                                Text("Questo è il codice per entrare nel tuo centro")
+                                Text("This is the code to enter your center")
                                 Text(self.centerCode)
                                     .font(.title2)
                             }.padding(.top, 50)
@@ -204,6 +204,11 @@ struct ContentView: View {
                 ZStack{
                     ListaSpecialisti()
                 }
+                .navigationBarTitle("")
+                .navigationBarItems(leading: Text("Specialists")
+                                        .font(.largeTitle)
+                                        .bold()
+                )
                 
             }
             .navigationBarHidden(true)
@@ -222,32 +227,13 @@ struct ContentView: View {
                     VStack{
                         //Mettere il settings
                         Settings(with_center: $with_center)
-                        
-                        /*Button(action: {
-                            
-                            try! Auth.auth().signOut()
-                            UserDefaults.standard.set(false, forKey: "status")
-                            NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
-                            //se fa il logout questa variabile
-                            //deve essere impostata a false
-                            self.with_center = false
-                            
-                        }) {
-                            
-                            Text("Logout")
-                                .foregroundColor(.black)
-                                .padding(.vertical)
-                                .frame(width: UIScreen.main.bounds.width - 50)
-                        }
-                        .frame(minWidth: 0, maxWidth: 100, minHeight: 0, maxHeight: 30)
-                        .padding()
-                        .foregroundColor(.black)
-                        .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
-                        .cornerRadius(40)
-                        .padding(.top, 25)
-                        */
                     }
                 }
+                .navigationBarTitle("")
+                .navigationBarItems(leading: Text("Settings")
+                                        .font(.largeTitle)
+                                        .bold()
+                )
                 
                 
             }
