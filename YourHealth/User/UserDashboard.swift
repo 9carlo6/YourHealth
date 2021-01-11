@@ -20,27 +20,64 @@ struct UserDashboard: View {
     //per tornare indietro
     @Environment(\.presentationMode) var presentationMode
     
+    let cities = ["Benevento", "Airola", "Roma", "Firenze", "Torino", "Napoli", "Palermo"]
+    
+    @State private var searchText : String = ""
     
     var body: some View {
-        ZStack{
-            //per il colore di background di dello ZStack
-            navColor.edgesIgnoringSafeArea(.all)
+        VStack {
             
-            Form {
-                Section(header: Text("Enter the name of the city where you are")
-                            .fontWeight(.light)
-                            .font(.headline)
-                            .foregroundColor(.black)){
-                    TextField("City", text: $city)
-                }
+            SearchBar(text: $searchText, placeholder: "Enter the name of the city where you are")
+            List {
+                ForEach(self.cities.filter {
+                    self.searchText.isEmpty ? true : $0.lowercased().contains(self.searchText.lowercased())
+                }, id: \.self) { city in
+                    Button(action:{
+                        //bisogna mettere la view relativa al centro
+                        self.presentationMode.wrappedValue.dismiss()
+                    }){
+                        Text(city)
+                    }
+                }.listRowBackground(navColor)
             }
-            .onAppear {
-                UITableView.appearance().backgroundColor = navColorUI
-             }
             
-            //parte della lista dei centri nella citta
-            
-        }    
+        }
+    }
+}
+
+struct SearchBar: UIViewRepresentable {
+
+    @Binding var text: String
+    var placeholder: String
+
+    class Coordinator: NSObject, UISearchBarDelegate {
+
+        @Binding var text: String
+
+        init(text: Binding<String>) {
+            _text = text
+        }
+
+        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+            text = searchText
+        }
+    }
+
+    func makeCoordinator() -> SearchBar.Coordinator {
+        return Coordinator(text: $text)
+    }
+
+    func makeUIView(context: UIViewRepresentableContext<SearchBar>) -> UISearchBar {
+        let searchBar = UISearchBar(frame: .zero)
+        searchBar.delegate = context.coordinator
+        searchBar.placeholder = placeholder
+        searchBar.searchBarStyle = .minimal
+        searchBar.autocapitalizationType = .none
+        return searchBar
+    }
+
+    func updateUIView(_ uiView: UISearchBar, context: UIViewRepresentableContext<SearchBar>) {
+        uiView.text = text
     }
 }
 

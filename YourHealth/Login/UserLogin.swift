@@ -72,7 +72,7 @@ struct UserHome : View {
 struct UserLogin2 : View {
   
   @State var color = Color.black.opacity(0.7)
-  @State var email = "prova10@gmail.com"
+  @State var email = "carlo@gmail.com"
   @State var pass = "password"
   @State var visible = false
   @Binding var show : Bool
