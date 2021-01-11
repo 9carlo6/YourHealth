@@ -6,6 +6,11 @@
 //
 
 import SwiftUI
+import FirebaseCore
+import Firebase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+
 
 struct UserDashboard: View {
     //colore per la tab view
@@ -20,7 +25,7 @@ struct UserDashboard: View {
     //per tornare indietro
     @Environment(\.presentationMode) var presentationMode
     
-    let cities = ["Benevento", "Airola", "Roma", "Firenze", "Torino", "Napoli", "Palermo"]
+    @State var cities = ["Napoli - Fox Hound", "Bergamo - Cortex Island"]
     
     @State private var searchText : String = ""
     
@@ -41,8 +46,50 @@ struct UserDashboard: View {
                 }.listRowBackground(navColor)
             }
             
+        }.onAppear{
+            SelectedCenterInfo()
         }
     }
+    
+    
+    
+    //Questa funzione serve per prendere la lista dei centri dal database
+    //INIZIO FUNZIONE
+    private func SelectedCenterInfo() {
+        //istanza database
+        let db = Firestore.firestore()
+        //user id
+        //guard let userID = Auth.auth().currentUser?.uid else { return }
+        
+        //entriamo nella collezione centers per vedere se l'utente
+        //loggato è gia un proprietario
+        db.collection("Centers").getDocuments() {
+            (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    if(querySnapshot!.documents.isEmpty){
+                        //questa cosa però non dovrebbe succedere
+                        //in quanto si prevede la presena di almeno un centro nel db
+                        print("non ci sono centri nel db")
+                    }else{
+                        //si prendono tutte le citta dei centri e si uniscono
+                        //all'array cities
+                        for document in querySnapshot!.documents {
+                            print("\(document.documentID) => \(document.data())")
+                            let data = document.data()
+                            let city = data["City"] as! String
+                            let center = data["Name"] as! String
+                            self.cities.append(city + " - " + center)
+                        }
+                    }
+                }
+        }
+        
+    }
+    //FINE FUNZIONE
+    
+    
 }
 
 struct SearchBar: UIViewRepresentable {
@@ -79,7 +126,14 @@ struct SearchBar: UIViewRepresentable {
     func updateUIView(_ uiView: UISearchBar, context: UIViewRepresentableContext<SearchBar>) {
         uiView.text = text
     }
+    
 }
+
+
+
+
+
+
 
 struct UserDashboard_Previews: PreviewProvider {
     static var previews: some View {

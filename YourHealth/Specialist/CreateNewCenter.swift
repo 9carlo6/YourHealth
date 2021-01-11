@@ -24,6 +24,7 @@ struct CreateNewCenter: View {
     @State private var centerEmail = ""
     @State private var centerWebSite = ""
     @State private var centerPhone = ""
+    @State private var centerCity = ""
     
     //variabile necessaria per aggiornare il conenuto della dashboard
     @Binding var with_center: Bool
@@ -67,6 +68,12 @@ struct CreateNewCenter: View {
                                     .foregroundColor(.black)){
                             TextField("Phone", text: $centerPhone)
                         }
+                        Section(header: Text("Center City")
+                                    .fontWeight(.light)
+                                    .font(.headline)
+                                    .foregroundColor(.black)){
+                            TextField("City", text: $centerCity)
+                        }
                     }
                     .onAppear {
                         UITableView.appearance().backgroundColor = navColorUI
@@ -77,7 +84,7 @@ struct CreateNewCenter: View {
                             //clicca submit per tornare indietro
                             
                             Button(action: { self.presentationMode.wrappedValue.dismiss()
-                                createNewCenter(name: centerName,email: centerEmail,website: centerWebSite,phone: centerPhone)
+                                createNewCenter(name: centerName,email: centerEmail,website: centerWebSite,phone: centerPhone, city: centerCity)
                              }) {
                                 Text("Submit")
                                     .fontWeight(.semibold)
@@ -105,7 +112,7 @@ struct CreateNewCenter: View {
     }
     
     //funzione per creare un nuovo centro
-    private func createNewCenter(name: String, email: String, website: String, phone: String) {
+    private func createNewCenter(name: String, email: String, website: String, phone: String, city: String) {
             let userID = Auth.auth().currentUser!.uid
             let db = Firestore.firestore()
             var ref: DocumentReference? = nil
@@ -115,6 +122,7 @@ struct CreateNewCenter: View {
                 "Website": website,
                 "Phone": phone,
                 "Owner": userID,
+                "City": city,
                 "Code": randomString(length: 5)
             ]) { err in
                 if let err = err {

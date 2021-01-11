@@ -32,6 +32,7 @@ struct ContentView: View {
     @State private var centerWebSite = ""
     @State private var centerPhone = ""
     @State private var centerCode = ""
+    @State private var centerCity = ""
     
     
     var body: some View{
@@ -61,6 +62,8 @@ struct ContentView: View {
                                 Text(self.centerWebSite)
                                     .font(.title2)
                                 Text(self.centerPhone)
+                                    .font(.title2)
+                                Text(self.centerCity)
                                     .font(.title2)
                             }
                             .padding(.bottom, 180)
@@ -299,6 +302,7 @@ struct ContentView: View {
                                             self.centerWebSite = data["Website"] as! String
                                             self.centerPhone = data["Phone"] as! String
                                             self.centerCode = data["Code"] as! String
+                                            self.centerCity = data["City"] as! String
                                             
                                         }
                                         self.with_center = true
@@ -319,6 +323,7 @@ struct ContentView: View {
                             self.centerWebSite = data["Website"] as! String
                             self.centerPhone = data["Phone"] as! String
                             self.centerCode = data["Code"] as! String
+                            self.centerCity = data["City"] as! String
                             
                         }
                     
