@@ -35,8 +35,8 @@ struct SettingsUser: View {
                       
                   
                   Text("Pippo Inzaghi")
-                      .font(.system(.title))
-                      .fontWeight(.black)
+                    .fontWeight(.semibold)
+                    .font(.title)
                     
                       
                       

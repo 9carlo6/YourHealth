@@ -15,47 +15,10 @@ struct Settings: View {
     
     @Environment(\.presentationMode) var presentationMode
 
-
-    
     //variabile necessaria per aggiornare il conenuto della dashboard
     @Binding var with_center: Bool
     
-    /*init(){
-        let navBarAppearance = UINavigationBarAppearance()
-        
-        navBarAppearance.backgroundColor = UIColor.init(Color("LightPink"))
-        
-        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont(name: "ArialRoundedMTBold", size: 35)!]
-        
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont(name: "ArialRoundedMTBold", size: 20)!]
-        
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-        UINavigationBar.appearance().compactAppearance = navBarAppearance
-        
-        //Cambio della freccia
-        navBarAppearance.setBackIndicatorImage(UIImage(systemName: "arrow.turn.up.left"), transitionMaskImage: UIImage(systemName: "arrow.turn.up.left"))
-        
-        UINavigationBar.appearance().tintColor = UIColor.black
-        
-        
-        //Rimuove la linea nella NavigationBar
-        navBarAppearance.configureWithTransparentBackground()
-        
-        
-        //
-        UITableView.appearance().backgroundColor = .clear
-        
-        
-       
-        
-        
-    }*/
-    
-    
-    
     @State var navColor: Color = Color.init(red: 255/255, green: 240/255, blue: 240/255)
-    
     
     var body: some View {
         
@@ -75,8 +38,8 @@ struct Settings: View {
                           
                       
                       Text("Giulia Giordano")
-                          .font(.system(.title))
-                          .fontWeight(.black)
+                        .fontWeight(.semibold)
+                        .font(.title)
                         
                           
                           
@@ -146,7 +109,7 @@ struct Settings: View {
                    //Image(systemName: "mail.fill")
                        
                       
-                       Text("Notification")
+                       Text("Notifications")
                   }
                   .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                   
@@ -224,10 +187,7 @@ struct Settings: View {
                
            
            }
-             
-             .navigationBarTitle("Settings")
-             .background(navColor.edgesIgnoringSafeArea(.all))
-       // }
+            .background(navColor.edgesIgnoringSafeArea(.all))
         
     }
 }

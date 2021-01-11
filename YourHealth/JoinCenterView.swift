@@ -68,14 +68,16 @@ struct JoinCenterView: View {
                 }
                 .padding(.top, 400)
                 //fine parte bottoni
-                .navigationBarTitle("")
-                .navigationBarItems(leading: Text("Join a Center")
-                                        .font(.largeTitle)
-                                        .bold())
-                
+                .navigationBarHidden(true)
+                .navigationBarBackButtonHidden(true)
                 
             }
+            
         }
+        .navigationBarTitle("")
+        .navigationBarItems(leading: Text("Join a Center")
+                                .font(.largeTitle)
+                                .bold())
     }
     
     //Questa funzione serve per capire se l'utente ha un centro.

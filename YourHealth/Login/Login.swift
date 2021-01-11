@@ -5,7 +5,10 @@
 //  Created by pannullocarlo on 07/01/2021.
 //
 import SwiftUI
+import FirebaseCore
 import Firebase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
   
 struct Login: View {
   var body: some View {
@@ -464,9 +467,9 @@ struct SignUp : View {
     
 //funzione per creare specialista
      func createNewSP(email: String, city: String, profession: String, name: String, address: String, alboid: String) {
+        guard let userID = Auth.auth().currentUser?.uid else { return }
         let db = Firestore.firestore()
-        var ref: DocumentReference? = nil
-        ref = db.collection("Specialists").addDocument(data: [
+        db.collection("Specialists").document("\(userID)").setData([
             "Name and Surname": name,
             "Address": address,
             "Email": email,
@@ -475,13 +478,10 @@ struct SignUp : View {
             "AlboCode": alboid
         ]) { err in
             if let err = err {
-                print("Error adding document: \(err)")
-            } else {
-                print("Document added with ID: \(ref!.documentID)")
-                //cambia il valore della variabile with_center
-                //per aggiornare la dashboard con il nuovo centro scaricato
-            }
-        }
+                    print("Error writing document: \(err)")
+                } else {
+                    print("Document successfully written!")
+                }        }
     }
   }
 }
