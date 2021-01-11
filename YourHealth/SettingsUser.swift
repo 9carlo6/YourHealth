@@ -14,6 +14,7 @@ import SwiftUI
 
 struct SettingsUser: View {
     //variabile necessaria per aggiornare il conenuto della dashboard
+    
     //@Binding var with_center: Bool
     
     @State var navColor: Color = Color.init(red: 255/255, green: 240/255, blue: 240/255)
