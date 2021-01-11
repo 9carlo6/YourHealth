@@ -45,18 +45,21 @@ struct CreateNewCenter: View {
                                     .font(.headline)
                                     .foregroundColor(.black)){
                             TextField("Name", text: $centerName)
+                            
                         }
                         Section(header: Text("Center Email")
                                     .fontWeight(.light)
                                     .font(.headline)
                                     .foregroundColor(.black)){
                             TextField("Email", text: $centerEmail)
+                                .autocapitalization(.none)
                         }
                         Section(header: Text("Center Website")
                                     .fontWeight(.light)
                                     .font(.headline)
                                     .foregroundColor(.black)){
                             TextField("Website", text: $centerWebSite)
+                                .autocapitalization(.none)
                         }
                         Section(header: Text("Center Phone")
                                     .fontWeight(.light)
@@ -90,13 +93,14 @@ struct CreateNewCenter: View {
                         }
                         .padding(.top, 470)
                     //fine parte bottoni
-                    .navigationBarTitle("")
-                    .navigationBarItems(leading: Text("Create New Center")
-                                            .font(.largeTitle)
-                                            .bold())
+                    .navigationBarHidden(true)
+                    .navigationBarBackButtonHidden(true)
                     }
 
-            }
+            }.navigationBarTitle("")
+            .navigationBarItems(leading: Text("Create New Center")
+                                    .font(.largeTitle)
+                                    .bold())
         }
     }
     

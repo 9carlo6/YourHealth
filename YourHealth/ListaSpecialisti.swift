@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ListaSpecialisti: View {
     
-    //@State private var searchText = ""
     @Environment(\.presentationMode) var presentationMode
     
     var specialists = [Specialist(image: "dottoressa1", name: "Giulia Giordano", role: "Psychologist"), Specialist(image: "dottore1", name: "Paolo Verdi", role: "Neuropsychologist"), Specialist(image: "images-1", name: "Saverio Rossi", role: "Psychiatrist"), Specialist(image: "images-2", name: "Cassandra Mora", role: "Psychotherapist"), Specialist(image: "images", name: "Debora Bruni", role: "Neuropsychologist"), Specialist(image: "Unknown-1", name: "Giuseppe Conti", role: "Psychologist"), Specialist(image: "Unknown", name: "Mauro Pirlo", role: "Psychotherapist")
@@ -44,10 +43,6 @@ struct ListaSpecialisti: View {
         
         //
         UITableView.appearance().backgroundColor = .clear
-        
-        
-       
-        
         
     }
     
@@ -99,17 +94,12 @@ struct ListaSpecialisti: View {
                     }
                 }
                 
-                    
-                .navigationBarTitle("Specialists", displayMode: .automatic)
-                    
-                .background(navColor.edgesIgnoringSafeArea(.all))
-                    
-                    
-                    
-               // }
                 
+                .background(navColor.edgesIgnoringSafeArea(.all))
+               // }
             
             }
+        
        
         
    }
@@ -155,9 +145,8 @@ struct ProfileSpecialist: View {
                         
                     
                 Text(specialist.name)
-                    .font(.system(.largeTitle, design: .rounded))
-                    .fontWeight(.black)
-                    .bold()
+                    .fontWeight(.semibold)
+                    .font(.title)
                     .multilineTextAlignment(.center)
                     
                     
@@ -212,6 +201,5 @@ struct BasicSpecialist: View {
                     
 
                 }
-           //}
     }
 }
