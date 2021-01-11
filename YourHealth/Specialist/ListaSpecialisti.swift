@@ -87,9 +87,9 @@ struct ListaSpecialisti: View {
                                 .padding(.leading, 5)
                                 
                         }
+                        
         
                         .listRowBackground(Color("LightPink"))
-                            
                         
                     }
                 }
