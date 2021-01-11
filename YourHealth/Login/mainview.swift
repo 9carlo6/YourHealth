@@ -53,7 +53,7 @@ struct mainview: View {
             
             HStack {
                 //per eliminare back add navigationBarBackButtonHidden(true)
-                NavigationLink(destination: Login()) {
+                NavigationLink(destination: UserLogin()) {
                 Text("User")
                     .fontWeight(.semibold)
                     .foregroundColor(Color(red: 56/255, green: 55/255, blue: 64/255))
