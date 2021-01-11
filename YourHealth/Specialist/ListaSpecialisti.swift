@@ -84,7 +84,6 @@ struct ListaSpecialisti: View {
                                 
                                 .background(navColor.edgesIgnoringSafeArea(.all))
                                 
-                                .padding(.leading, 5)
                                 
                         }
                         
