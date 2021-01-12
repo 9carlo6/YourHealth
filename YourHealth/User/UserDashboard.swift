@@ -171,37 +171,61 @@ struct SelectedCenterInfoView: View {
 
     
     var body: some View {
-        NavigationView{
-            ZStack{
-                navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                
-                //l'immagine poi deve essere scaricata dal database
+        ZStack{
+            navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            
+            //l'immagine poi deve essere scaricata dal database
+            VStack{
                 VStack{
-                    VStack{
-                        Image("center")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 200.0, height: 100.0)
-                            .padding(50)
-                            
-                        Text(self.centerName)
-                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                            .bold()
-                        Text(self.centerEmail)
-                            .font(.title2)
-                        Text(self.centerWebSite)
-                            .font(.title2)
-                        Text(self.centerPhone)
-                            .font(.title2)
-                        Text(self.centerCity)
-                            .font(.title2)
+                    Image("center")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 200.0, height: 100.0)
+                        .padding(50)
                         
-                    }
-                    .padding(.bottom, 180)
+                    Text(self.centerName)
+                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        .bold()
+                    Text(self.centerEmail)
+                        .font(.title2)
+                    Text(self.centerWebSite)
+                        .font(.title2)
+                    Text(self.centerPhone)
+                        .font(.title2)
+                    Text(self.centerCity)
+                        .font(.title2)
                     
                 }
+                .padding(.bottom, 50)
                 
-            }
+                
+                VStack {
+                    
+                    NavigationLink(destination: OurSpecialistsView()) {
+                        Text("See our Specialist")
+                            .font(.title2)
+                    }
+                    
+                    HStack {
+                        Button(action: {
+                            //prenmendo il bottone si va al questionario
+                         }) {
+                            Text("Go to the questionnaire")
+                                .fontWeight(.semibold)
+                                .font(.title)
+                        }
+                        
+                    }
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .padding()
+                    .foregroundColor(.black)
+                    .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
+                    .cornerRadius(40)
+                    .padding(.horizontal, 20)
+                }
+                .padding(.top, 140)
+                //fine parte bottoni
+            }.padding(.bottom, 50)
             
         }
         .navigationBarTitle("")
@@ -211,6 +235,7 @@ struct SelectedCenterInfoView: View {
         .onAppear{
             SelectedCenterInfo()
         }
+        
     }
     
     
