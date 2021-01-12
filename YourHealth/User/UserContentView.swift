@@ -29,6 +29,8 @@ struct UserContentView: View {
     @State private var centerPhone = ""
     @State private var centerCode = ""
     
+    @State var isActive : Bool = false
+    
     var body: some View{
         
         TabView{

@@ -29,6 +29,8 @@ struct UserDashboard: View {
     
     @State private var searchText : String = ""
     
+    @State var isActive : Bool = true
+    
     var body: some View {
         VStack {
             
@@ -37,15 +39,18 @@ struct UserDashboard: View {
                 ForEach(self.cities.filter {
                     self.searchText.isEmpty ? true : $0.lowercased().contains(self.searchText.lowercased())
                 }, id: \.self) { city_center in
-                    NavigationLink(destination: SelectedCenterInfoView(city_center: city_center)) {
+                    NavigationLink(destination: SelectedCenterInfoView(city_center: city_center, rootIsActive: self.$isActive))
+                    {
                     Text(city_center)
                     }
+                    .isDetailLink(false)
                     
                 }.listRowBackground(navColor)
             }
             
         }.onAppear{
             CentersList()
+            isActive = true
         }
     }
     
@@ -168,6 +173,9 @@ struct SelectedCenterInfoView: View {
     @State private var centerPhone = ""
     @State private var centerCode = ""
     @State private var centerCity = ""
+    
+    @Binding var rootIsActive : Bool
+    
 
     
     var body: some View {
@@ -207,13 +215,13 @@ struct SelectedCenterInfoView: View {
                     }
                     
                     HStack {
-                        Button(action: {
-                            //prenmendo il bottone si va al questionario
-                         }) {
+                        NavigationLink(destination: SurveyView(rootIsActive2: self.$rootIsActive)) {
                             Text("Go to the questionnaire")
                                 .fontWeight(.semibold)
-                                .font(.title)
+                                .font(.title2)
                         }
+                        .isDetailLink(false)
+
                         
                     }
                     .frame(minWidth: 0, maxWidth: .infinity)
@@ -234,6 +242,9 @@ struct SelectedCenterInfoView: View {
                                 .bold())
         .onAppear{
             SelectedCenterInfo()
+            if(rootIsActive==false){
+                self.presentationMode.wrappedValue.dismiss()
+            }
         }
         
     }
