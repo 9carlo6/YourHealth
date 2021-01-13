@@ -23,6 +23,9 @@ struct Settings: View {
     @State private var showAlert = false
     
     
+    //let userId = Auth.auth().currentUser?.uid else {return}
+    //let docRef = db.collection("Specialists").document(AlboCode)
+    
     var body: some View {
         
        // NavigationView{
@@ -40,12 +43,13 @@ struct Settings: View {
                           
                           
                       
-                      Text("Giulia Giordano")
+                      /*
+                     Text("Giulia Giordano")
                         .fontWeight(.semibold)
                         .font(.title)
+                       */
+                    
                         
-                          
-                          
                      
                       Text("Benevento (BN), 29/03/1998")
                           .font(.system(.body, design: .rounded))
@@ -184,7 +188,7 @@ struct Settings: View {
                                 .font(.title)
                               
                               
-                              , message: Text("Do you want to exit the YourHealth application?")
+                              , message: Text("Do you want to exit for YourHealth application?")
                               
                               
                               ,primaryButton: .default(Text("Yes"), action: {

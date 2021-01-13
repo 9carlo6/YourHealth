@@ -19,6 +19,11 @@ struct SettingsUser: View {
     
     @State var navColor: Color = Color.init(red: 255/255, green: 240/255, blue: 240/255)
     
+    @State private var showAlert = false
+    
+    //variabile necessaria per aggiornare il conenuto della dashboard
+    @Binding var with_center_User: Bool
+    
     var body: some View {
         Form{
             
@@ -157,21 +162,39 @@ struct SettingsUser: View {
                   
                 Button(action: {
                     
-                    try! Auth.auth().signOut()
-                    UserDefaults.standard.set(false, forKey: "status")
-                    NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
-                    
-                    //se fa il logout questa variabile
-                    //deve essere impostata a false
-                    
-                    //self.with_center = false
-                    
-                }) {
+                    self.showAlert.toggle()
+                }){
+                
                     
                     Text("Logout")
                         .foregroundColor(.black)
                         .padding(.vertical)
+                    
+
+                    
+                }.alert(isPresented: $showAlert){
+                   
+                    Alert(title: Text("Logout")
+                            .font(.title)
+                          
+                          
+                          , message: Text("Do you want to exit for YourHealth application?")
+                          
+                          
+                          ,primaryButton: .default(Text("Yes"), action: {
+                            try! Auth.auth().signOut()
+                            UserDefaults.standard.set(false, forKey: "status")
+                            NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+                            
+                            //se fa il logout questa variabile
+                            //deve essere impostata a false
+                            self.with_center_User = false
+                            
+                          })
+                          
+                          , secondaryButton: .default(Text("No")))
                         
+                    
                 }
               }
               .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
@@ -195,8 +218,9 @@ struct SettingsUser: View {
     
 }
 
-struct SettingsUser_Previews: PreviewProvider {
+/*struct SettingsUser_Previews: PreviewProvider {
     static var previews: some View {
         SettingsUser()
     }
 }
+*/
