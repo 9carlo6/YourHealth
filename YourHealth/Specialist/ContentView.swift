@@ -161,14 +161,19 @@ struct ContentView: View {
             NavigationView{
                 ZStack{
                     navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                    Text("You are in Appointments")
+                    appointment()
                         
                 }
                 .navigationBarTitle("")
                 .navigationBarItems(leading: Text("Appointments")
                                         .font(.largeTitle)
                                         .bold()
-                )
+                                    ,trailing: Button(action: {
+                                        //qua va l'azione
+
+                                    }, label: { Image(systemName: "plus")
+                                    })
+                            )
             }
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
