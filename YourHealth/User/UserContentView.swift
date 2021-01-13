@@ -63,7 +63,7 @@ struct UserContentView: View {
             NavigationView{
                 ZStack{
                     navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                    Text("You are in Appointments")
+                    appointmentuser()
                         
                 }
                 .navigationBarTitle("")
