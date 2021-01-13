@@ -20,6 +20,9 @@ struct Settings: View {
     
     @State var navColor: Color = Color.init(red: 255/255, green: 240/255, blue: 240/255)
     
+    @State private var showAlert = false
+    
+    
     var body: some View {
         
        // NavigationView{
@@ -156,8 +159,48 @@ struct Settings: View {
                     .background(Color("Darkpink"))
                     .cornerRadius(15)
                       
-                      
                     Button(action: {
+                        
+                        self.showAlert.toggle()
+                    }){
+                    
+                        
+                        Text("Logout")
+                            .foregroundColor(.black)
+                            .padding(.vertical)
+                        
+
+                        
+                    }.alert(isPresented: $showAlert){
+                        /*Alert(title: Text("Logout")
+                                .font(.title)
+                              
+                              , message: Text("Do you want to exit the YourHealth application?")
+                                
+                              
+                              , dismissButton: .default(Text("No")))
+                        */
+                        Alert(title: Text("Logout")
+                                .font(.title)
+                              
+                              
+                              , message: Text("Do you want to exit the YourHealth application?")
+                              
+                              
+                              ,primaryButton: .default(Text("Yes"), action: {
+                                try! Auth.auth().signOut()
+                                UserDefaults.standard.set(false, forKey: "status")
+                                NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+                                //se fa il logout questa variabile
+                                //deve essere impostata a false
+                                self.with_center = false
+                              })
+                              
+                              , secondaryButton: .default(Text("No")))
+                            
+                        
+                    }
+                    /*Button(action: {
                         
                         try! Auth.auth().signOut()
                         UserDefaults.standard.set(false, forKey: "status")
@@ -172,7 +215,7 @@ struct Settings: View {
                             .foregroundColor(.black)
                             .padding(.vertical)
                             
-                    }
+                    }*/
                   }
                   .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                   

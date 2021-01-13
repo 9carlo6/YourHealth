@@ -218,7 +218,7 @@ struct ContentView: View {
             .navigationBarBackButtonHidden(true)
             .tabItem {
                 Image(systemName: "asterisk.circle.fill")
-                Text("Specialist")
+                Text("Specialists")
             }
             //questo è quello che si vede all'interno
             //della navigation view Settings
