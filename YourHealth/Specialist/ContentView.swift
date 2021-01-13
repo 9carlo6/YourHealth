@@ -168,7 +168,12 @@ struct ContentView: View {
                 .navigationBarItems(leading: Text("Appointments")
                                         .font(.largeTitle)
                                         .bold()
-                )
+                                    ,trailing: Button(action: {
+                                        //qua va l'azione
+
+                                    }, label: { Image(systemName: "plus")
+                                    })
+                            )
             }
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
