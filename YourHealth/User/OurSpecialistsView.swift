@@ -1,13 +1,13 @@
 //
-//  ListaSpecialisti.swift
+//  OurSpecialistsView.swift
 //  YourHealth
 //
-//  Created by conteangelo on 06/01/2021.
+//  Created by pannullocarlo on 12/01/2021.
 //
 
 import SwiftUI
 
-struct ListaSpecialisti: View {
+struct OurSpecialistsView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -57,7 +57,7 @@ struct ListaSpecialisti: View {
                     Text("Discover the specialists who work at this center")
                         .padding(.leading, 20)
                         .foregroundColor(.secondary)
-                        .padding(.bottom, -5)
+                        .padding(.bottom, 10)
                         
                 
                     List(){
@@ -84,6 +84,7 @@ struct ListaSpecialisti: View {
                                 
                                 .background(navColor.edgesIgnoringSafeArea(.all))
                                 
+                                .padding(.leading, 5)
                                 
                         }
                         
@@ -98,6 +99,10 @@ struct ListaSpecialisti: View {
                // }
             
             }
+            .navigationBarTitle("")
+            .navigationBarItems(leading: Text("Our Specialists")
+                                    .font(.largeTitle)
+                                    .bold())
         
        
         
@@ -105,10 +110,100 @@ struct ListaSpecialisti: View {
     
 }
 
-struct ListaSpecialisti_Previews: PreviewProvider {
+struct OurSpecialistsView_Previews: PreviewProvider {
     static var previews: some View {
         ListaSpecialisti()
     }
 }
 
+struct Specialist: Identifiable{
+    
+    var id = UUID()
+    var image: String
+    var name: String
+    var role: String
+    
+    
+    
+}
 
+
+struct ProfileSpecialist: View {
+    var specialist: Specialist
+    
+    @State var navColor: Color = Color.init(red: 255/255, green: 240/255, blue: 240/255)
+    
+    var body: some View {
+        
+        ZStack{
+            navColor.edgesIgnoringSafeArea(.all)
+            VStack{
+                    
+                    
+                Image(specialist.image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 150, alignment: .center)
+                    .clipShape(Circle())
+                    .padding()
+                        
+                    
+                Text(specialist.name)
+                    .fontWeight(.semibold)
+                    .font(.title)
+                    .multilineTextAlignment(.center)
+                    
+                    
+                Text(specialist.role)
+                    .bold()
+                    .font(.system(.body))
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                    
+                Text("Specialized center Healt Care Center \n Via Salvator Rosa 13, Benevento")
+                    .bold()
+                    .font(.system(.body))
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+                        
+                Spacer()
+                    
+            }
+
+        
+        }.padding(.top, -50)
+        
+        
+    }
+    
+}
+
+
+struct BasicSpecialist: View {
+    var specialist: Specialist
+    //@State var navColor: Color = Color.init(red: 255/255, green: 240/255, blue: 240/255)
+    
+    var body: some View {
+        
+           //ZStack(alignment: .leading){
+           //navColor.edgesIgnoringSafeArea(.all)
+                HStack{
+                    
+                    Image(specialist.image)
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .cornerRadius(25)
+                        
+                    
+                    VStack (alignment: .leading){
+                        
+                        Text(specialist.name)
+                        
+                        Text(specialist.role)
+                    }
+                    
+
+                }
+    }
+}

@@ -166,6 +166,8 @@ struct Login2 : View {
                       }) {
                           
                           Text("Login")
+                                .fontWeight(.semibold)
+                                .font(.title)
                               .foregroundColor(.black)
                               .padding(.vertical)
                               .frame(width: UIScreen.main.bounds.width - 50)

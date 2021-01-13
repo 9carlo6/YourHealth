@@ -28,9 +28,9 @@ struct SettingsUser: View {
               VStack{
                   
                   //Mi servirebbe la parte del login
-                  Image("profile")
+                  Image("pippo")
                       .resizable()
-                      .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 100, alignment: .center)
+                      .frame(width: 150, height: 150, alignment: .center)
                       .cornerRadius(50)
                       
                       
@@ -42,7 +42,7 @@ struct SettingsUser: View {
                       
                       
                  
-                  Text("Benevento (BN), 29/03/1998")
+                  Text("Benevento (BN), 9/09/1973")
                       .font(.system(.body, design: .rounded))
                       .foregroundColor(.black)
                       .aspectRatio(contentMode: .fit)
