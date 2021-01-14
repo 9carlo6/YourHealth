@@ -22,9 +22,13 @@ struct Settings: View {
     
     @State private var showAlert = false
     
+    @State private var name = ""
+    @State private var profession = ""
+    @State private var city = ""
+    @State private var address = ""
     
-    //let userId = Auth.auth().currentUser?.uid else {return}
-    //let docRef = db.collection("Specialists").document(AlboCode)
+    
+    
     
     var body: some View {
         
@@ -33,28 +37,27 @@ struct Settings: View {
                
                Section{
                   
-                  VStack{
+                VStack{
                       
-                      //Mi servirebbe la parte del login
-                      Image("dottoressa1")
+                    Image("dottoressa1")
                           .resizable()
                           .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 100, alignment: .center)
                           .cornerRadius(50)
-                          
-                          
                       
-                      /*
-                     Text("Giulia Giordano")
+                    Text(name)
                         .fontWeight(.semibold)
                         .font(.title)
-                       */
+                       
                     
-                        
+                    Text(profession)
+                        .font(.system(.body, design: .rounded))
+                        .foregroundColor(.black)
+                        .aspectRatio(contentMode: .fit)
                      
-                      Text("Benevento (BN), 29/03/1998")
-                          .font(.system(.body, design: .rounded))
-                          .foregroundColor(.black)
-                          .aspectRatio(contentMode: .fit)
+                    Text(city + ", " + address)
+                        .font(.system(.body, design: .rounded))
+                        .foregroundColor(.black)
+                        .aspectRatio(contentMode: .fit)
                       
                       
                       
@@ -233,8 +236,39 @@ struct Settings: View {
            
                
            
-           }
+            }.onAppear(perform: {
+                infoSpecialist()
+            })
             .background(navColor.edgesIgnoringSafeArea(.all))
+        
+    }
+    
+    
+    private func infoSpecialist(){
+        
+        
+        let db = Firestore.firestore()
+        
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        
+        
+        let docRef = db.collection("Specialists").document(userID)
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                
+                let data = document.data()
+                
+                self.name = data?["Name and Surname"] as! String
+                print(name)
+                self.profession = data?["Profession"] as! String
+                self.city = data?["City"] as! String
+                self.address = data?["Address"] as! String
+                
+            } else {
+                print("Document does not exist")
+            }
+        }
         
     }
 }
@@ -244,3 +278,5 @@ struct Settings: View {
         Settings()
     }
 }*/
+
+

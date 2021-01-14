@@ -24,6 +24,8 @@ struct SettingsUser: View {
     //variabile necessaria per aggiornare il conenuto della dashboard
     @Binding var with_center_User: Bool
     
+    @State private var name = ""
+    
     var body: some View {
         Form{
             
@@ -32,7 +34,7 @@ struct SettingsUser: View {
               
               VStack{
                   
-                  //Mi servirebbe la parte del login
+                  
                   Image("pippo")
                       .resizable()
                       .frame(width: 150, height: 150, alignment: .center)
@@ -40,7 +42,7 @@ struct SettingsUser: View {
                       
                       
                   
-                  Text("Pippo Inzaghi")
+                  Text(name)
                     .fontWeight(.semibold)
                     .font(.title)
                     
@@ -51,10 +53,13 @@ struct SettingsUser: View {
                       .font(.system(.body, design: .rounded))
                       .foregroundColor(.black)
                       .aspectRatio(contentMode: .fit)
+                
                   
                   
-                  
-              }.offset(x: 50, y: 0)
+              }
+              
+              .offset(x: 50, y: 0)
+    
            }
            
            .listRowBackground(navColor)
@@ -209,14 +214,40 @@ struct SettingsUser: View {
        
            
        
-       }
+        }.onAppear(perform: {
+            infoUser()
+        })
         
         .background(navColor.edgesIgnoringSafeArea(.all))
        
     
     }
     
+    private func infoUser(){
+        
+        
+        let db = Firestore.firestore()
+        
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        
+        
+        let docRef = db.collection("Users").document(userID)
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                
+                let data = document.data()
+                self.name = data?["Name and Surname"] as! String
+                print(name)
+            } else {
+                print("Document does not exist")
+            }
+        }
+        
+    }
+    
 }
+
 
 /*struct SettingsUser_Previews: PreviewProvider {
     static var previews: some View {
@@ -224,3 +255,8 @@ struct SettingsUser: View {
     }
 }
 */
+
+
+
+
+
