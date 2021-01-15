@@ -11,9 +11,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import SwiftUI
 
-//image
-//import Photos
-//import FirebaseStorage
+
 
 let FILE_NAME = "images-2.jpeg"
 
@@ -33,9 +31,7 @@ struct Settings: View {
     @State private var city = ""
     @State private var address = ""
     
-    //image
-    //@State var shown = false
-    //@State var imageUrl = ""
+   
     
     var body: some View {
         
@@ -45,24 +41,7 @@ struct Settings: View {
                Section{
                   
                 VStack{
-                    /*
-                    //image
-                    if imageUrl != "" {
-                        FirebaseImageView(imageUrl: imageUrl)
-                    }
                     
-                    Button(action: { self.shown.toggle()}){
-                        Image(systemName: "plus")
-                            .font(.title)
-                    }.sheet(isPresented: $shown){
-                        imagePicker(shown: self.$shown, imageUrl: self.$imageUrl)
-                    }
-                    .padding(10)
-                    .background(Color("Darkpink"))
-                    .foregroundColor(Color.black)
-                    .cornerRadius(20)
-                    
-                    */
                     
                     Image("dottoressa1")
                           .resizable()
@@ -87,8 +66,7 @@ struct Settings: View {
                       
                       
                 }
-                //.onAppear(perform: loadImageFromFirebase).animation(.spring())
-                //.offset(x: 50, y: 0)
+                
                }.frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
                
                .listRowBackground(navColor)
@@ -107,7 +85,7 @@ struct Settings: View {
                                    .frame(width: 25, height: 25, alignment: .leading)
                                    
                                    .frame(width:17, height: 20)
-                                   //.padding(.leading, 4)
+                                  
                            }
                            .frame(width: 40, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                            .background(Color("Darkpink"))
@@ -138,12 +116,12 @@ struct Settings: View {
                            .frame(width: 20, height: 20, alignment: .leading)
                            
                            .frame(width:17, height: 20)
-                           //.padding(.leading, 4)
+                           
                    }
                    .frame(width: 40, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                    .background(Color("Darkpink"))
                    .cornerRadius(15)
-                   //Image(systemName: "mail.fill")
+                   
                        
                       
                        Text("Notifications")
@@ -206,14 +184,7 @@ struct Settings: View {
 
                         
                     }.alert(isPresented: $showAlert){
-                        /*Alert(title: Text("Logout")
-                                .font(.title)
-                              
-                              , message: Text("Do you want to exit the YourHealth application?")
-                                
-                              
-                              , dismissButton: .default(Text("No")))
-                        */
+                        
                         Alert(title: Text("Logout")
                                 .font(.title)
                               
@@ -234,22 +205,7 @@ struct Settings: View {
                             
                         
                     }
-                    /*Button(action: {
-                        
-                        try! Auth.auth().signOut()
-                        UserDefaults.standard.set(false, forKey: "status")
-                        NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
-                        //se fa il logout questa variabile
-                        //deve essere impostata a false
-                        self.with_center = false
-                        
-                    }) {
-                        
-                        Text("Logout")
-                            .foregroundColor(.black)
-                            .padding(.vertical)
-                            
-                    }*/
+                    
                   }
                   .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                   
@@ -298,19 +254,7 @@ struct Settings: View {
         }
         
     }
-   /*
-    private func loadImageFromFirebase(){
-        let storage = Storage.storage().reference(withPath: FILE_NAME)
-        storage.downloadURL { (url, error) in
-            if error != nil {
-                print((error?.localizedDescription))
-                return
-            }
-            print("Download success")
-            self.imageUrl = "\(url!)"
-        }
-    }
- */
+   
 }
 
 /*struct Settings_Previews: PreviewProvider {
