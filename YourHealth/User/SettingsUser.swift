@@ -58,9 +58,9 @@ struct SettingsUser: View {
                   
               }
               
-              .offset(x: 50, y: 0)
+              
     
-           }
+           }.frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
            
            .listRowBackground(navColor)
            

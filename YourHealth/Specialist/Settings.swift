@@ -11,6 +11,12 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import SwiftUI
 
+//image
+//import Photos
+//import FirebaseStorage
+
+let FILE_NAME = "images-2.jpeg"
+
 struct Settings: View {
     
     @Environment(\.presentationMode) var presentationMode
@@ -27,8 +33,9 @@ struct Settings: View {
     @State private var city = ""
     @State private var address = ""
     
-    
-    
+    //image
+    //@State var shown = false
+    //@State var imageUrl = ""
     
     var body: some View {
         
@@ -38,12 +45,30 @@ struct Settings: View {
                Section{
                   
                 VStack{
-                      
+                    /*
+                    //image
+                    if imageUrl != "" {
+                        FirebaseImageView(imageUrl: imageUrl)
+                    }
+                    
+                    Button(action: { self.shown.toggle()}){
+                        Image(systemName: "plus")
+                            .font(.title)
+                    }.sheet(isPresented: $shown){
+                        imagePicker(shown: self.$shown, imageUrl: self.$imageUrl)
+                    }
+                    .padding(10)
+                    .background(Color("Darkpink"))
+                    .foregroundColor(Color.black)
+                    .cornerRadius(20)
+                    
+                    */
+                    
                     Image("dottoressa1")
                           .resizable()
                           .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 100, alignment: .center)
                           .cornerRadius(50)
-                      
+                    
                     Text(name)
                         .fontWeight(.semibold)
                         .font(.title)
@@ -61,8 +86,10 @@ struct Settings: View {
                       
                       
                       
-                  }.offset(x: 50, y: 0)
-               }
+                }
+                //.onAppear(perform: loadImageFromFirebase).animation(.spring())
+                //.offset(x: 50, y: 0)
+               }.frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
                
                .listRowBackground(navColor)
                
@@ -271,6 +298,19 @@ struct Settings: View {
         }
         
     }
+   /*
+    private func loadImageFromFirebase(){
+        let storage = Storage.storage().reference(withPath: FILE_NAME)
+        storage.downloadURL { (url, error) in
+            if error != nil {
+                print((error?.localizedDescription))
+                return
+            }
+            print("Download success")
+            self.imageUrl = "\(url!)"
+        }
+    }
+ */
 }
 
 /*struct Settings_Previews: PreviewProvider {
