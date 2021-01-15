@@ -40,32 +40,33 @@ struct Settings: View {
                
                Section{
                   
-                VStack{
-                    
-                    
-                    Image("dottoressa1")
-                          .resizable()
-                          .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 100, alignment: .center)
-                          .cornerRadius(50)
-                    
-                    Text(name)
-                        .fontWeight(.semibold)
-                        .font(.title)
-                       
-                    
-                    Text(profession)
-                        .font(.system(.body, design: .rounded))
-                        .foregroundColor(.black)
-                        .aspectRatio(contentMode: .fit)
-                     
-                    Text(city + ", " + address)
-                        .font(.system(.body, design: .rounded))
-                        .foregroundColor(.black)
-                        .aspectRatio(contentMode: .fit)
-                      
-                      
-                      
-                }
+                    VStack{
+                        
+                        
+                        Image("dottoressa1")
+                              .resizable()
+                              .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 100, alignment: .center)
+                              //.cornerRadius(50)
+                        
+                        Text(name)
+                            .fontWeight(.semibold)
+                            .font(.title)
+                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
+                        
+                        Text(profession)
+                            .font(.system(.body, design: .rounded))
+                            .foregroundColor(.black)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
+                         
+                        Text(city + ", " + address)
+                            .font(.system(.body, design: .rounded))
+                            .foregroundColor(.black)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
+                          
+                          
+                    }
                 
                }.frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
                
