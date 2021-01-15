@@ -34,7 +34,7 @@ struct appointmentuser: View {
     @State private var via = ""
     @State private var status = ""
     @State var with_event: Bool = true
-    @State var events = [Events(date: "Jan 01, 2020", spec: "Luca Giordano", via:"Via Benevento 28, 83000", status:"Completed"), Events(date: "Jan 18, 2020", spec: "Giulia Giordano", via:"Via Benevento 28, 83000", status:"In corso")]
+    @State var events = [Events(date: "Jan 01, 2020", spec: "Sara Pannella", via:"Via Salvator Rosa 18, 83000", status:"Completed"), Events(date: "Jan 18, 2020", spec: "Giulia Giordano", via:"Via Benevento 28, 83000", status:"In progress")]
     //per tornare indietro
     @Environment(\.presentationMode) var presentationMode
     
@@ -125,20 +125,23 @@ struct CardView: View {
     var body: some View {
                
         VStack{
-            Text(date)
-                .fontWeight(.semibold)
-                .font(.largeTitle)
-                .padding(.leading)
-               Text(spec)
-                .font(.title)
-                .padding(.leading)
-               Text(via)
-                .font(.title3)
-            Text(status)
-             .font(.title3)
+            VStack(alignment: .leading, spacing: 6){
+                Text(date)
+                    .fontWeight(.semibold)
+                    .font(.largeTitle)
+                   Text(spec)
+                    .font(.title)
+                   Text(via)
+                    .font(.title3)
+                Text(status)
+                 .font(.title3)
+            }.padding(.trailing, 100)
+            
         }
+        
         .padding()
-        .background(Color("Darkpink"))
+        .frame(minWidth: 0, maxWidth: .infinity)
+        .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
         .cornerRadius(15)
         .opacity(0.8)
         .padding(8)

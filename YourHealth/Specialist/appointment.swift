@@ -19,8 +19,8 @@ struct appointment: View {
     @State var isActive : Bool = false
     //per tornare indietro
     @Environment(\.presentationMode) var presentationMode
-    @State var events = [Events(date: "Jan 01, 2020", spec: "Luca Giordano", via:"Via Benevento 28, 83000", status:"Completed")]
-    @State var eventss = [Events(date: "Jan 01, 2020", spec: "Luca Giordano", via:"Via Benevento 28, 83000", status:"Completed"),Events(date: "Jan 18, 2020", spec: "Marco Giordano", via:"Via Benevento 28, 83000", status:"Completed")]
+    @State var events = [Events(date: "Jan 01, 2020", spec: "Christian Romano", via:"Via Salvator Rosa 13, 83000", status:"Completed")]
+    @State var eventss = [Events(date: "Jan 01, 2020", spec: "Christian Romano", via:"Via Salvator Rosa 13, 83000", status:"Completed"),Events(date: "Jan 19, 2020", spec: "Giacomo Lucci", via:"Via Prato 12, 83000", status:"In progress")]
     var body: some View {
         NavigationView{
             ZStack{
@@ -40,7 +40,7 @@ struct appointment: View {
                             ForEach(self.eventss){event in
                                     cardView(date: event.date, spec: event.spec , via: event.via, status: event.status)
                             }
-                        }.padding(.bottom, 350)
+                            }.padding(.bottom, 350)
                         }
                   
                     
@@ -78,8 +78,8 @@ struct ACalendarView: View {
             NavigationLink(destination: appointment(isActive: true)) {
            DatePicker("Select a date", selection: $selectedDate, displayedComponents: .date)
            .datePickerStyle(GraphicalDatePickerStyle())
-            .frame(width: 300, height: 350)
-            .background(Color("Darkpink"))
+            .frame(minWidth: 0, maxWidth: 350, maxHeight: 350)
+            .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
             .cornerRadius(15)
             .padding(.bottom, 380)
             }
@@ -95,20 +95,21 @@ struct cardView: View {
     var body: some View {
                
         VStack{
-            Text(date)
-                .fontWeight(.semibold)
-                .font(.largeTitle)
-                .padding(.leading)
-               Text(spec)
-                .font(.title)
-                .padding(.leading)
-               Text(via)
-                .font(.title3)
-            Text(status)
-             .font(.title3)
+            VStack(alignment: .leading, spacing: 6){
+                Text(date)
+                    .fontWeight(.semibold)
+                    .font(.largeTitle)
+                   Text(spec)
+                    .font(.title)
+                   Text(via)
+                    .font(.title3)
+                Text(status)
+                 .font(.title3)
+            }.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
         }
         .padding()
-        .background(Color("Darkpink"))
+        .frame(minWidth: 0, maxWidth: .infinity)
+        .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
         .cornerRadius(15)
         .opacity(0.8)
         .padding(8)
