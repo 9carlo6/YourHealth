@@ -31,6 +31,9 @@ struct UserContentView: View {
     
     @State var isActive : Bool = false
     
+    //variabili utilizzate per la navigationview della dashboard
+    @State var with_center_User: Bool = false
+    
     var body: some View{
         
         TabView{
@@ -137,7 +140,7 @@ struct UserContentView: View {
                     //parte da cancellare serve per fare il logout
                     VStack{
                         //Mettere il settings
-                        SettingsUser()
+                        SettingsUser(with_center_User: $with_center_User)
                     }
                 }
                 .navigationBarTitle("")

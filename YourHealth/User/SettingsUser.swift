@@ -19,6 +19,13 @@ struct SettingsUser: View {
     
     @State var navColor: Color = Color.init(red: 255/255, green: 240/255, blue: 240/255)
     
+    @State private var showAlert = false
+    
+    //variabile necessaria per aggiornare il conenuto della dashboard
+    @Binding var with_center_User: Bool
+    
+    @State private var name = ""
+    
     var body: some View {
         Form{
             
@@ -27,7 +34,7 @@ struct SettingsUser: View {
               
               VStack{
                   
-                  //Mi servirebbe la parte del login
+                  
                   Image("pippo")
                       .resizable()
                       .frame(width: 150, height: 150, alignment: .center)
@@ -35,7 +42,7 @@ struct SettingsUser: View {
                       
                       
                   
-                  Text("Pippo Inzaghi")
+                  Text(name)
                     .fontWeight(.semibold)
                     .font(.title)
                     
@@ -46,11 +53,14 @@ struct SettingsUser: View {
                       .font(.system(.body, design: .rounded))
                       .foregroundColor(.black)
                       .aspectRatio(contentMode: .fit)
+                
                   
                   
-                  
-              }.offset(x: 50, y: 0)
-           }
+              }
+              
+              
+    
+           }.frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
            
            .listRowBackground(navColor)
            
@@ -157,21 +167,39 @@ struct SettingsUser: View {
                   
                 Button(action: {
                     
-                    try! Auth.auth().signOut()
-                    UserDefaults.standard.set(false, forKey: "status")
-                    NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
-                    
-                    //se fa il logout questa variabile
-                    //deve essere impostata a false
-                    
-                    //self.with_center = false
-                    
-                }) {
+                    self.showAlert.toggle()
+                }){
+                
                     
                     Text("Logout")
                         .foregroundColor(.black)
                         .padding(.vertical)
+                    
+
+                    
+                }.alert(isPresented: $showAlert){
+                   
+                    Alert(title: Text("Logout")
+                            .font(.title)
+                          
+                          
+                          , message: Text("Do you want to exit for YourHealth application?")
+                          
+                          
+                          ,primaryButton: .default(Text("Yes"), action: {
+                            try! Auth.auth().signOut()
+                            UserDefaults.standard.set(false, forKey: "status")
+                            NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+                            
+                            //se fa il logout questa variabile
+                            //deve essere impostata a false
+                            self.with_center_User = false
+                            
+                          })
+                          
+                          , secondaryButton: .default(Text("No")))
                         
+                    
                 }
               }
               .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
@@ -186,17 +214,49 @@ struct SettingsUser: View {
        
            
        
-       }
+        }.onAppear(perform: {
+            infoUser()
+        })
         
         .background(navColor.edgesIgnoringSafeArea(.all))
        
     
     }
     
+    private func infoUser(){
+        
+        
+        let db = Firestore.firestore()
+        
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        
+        
+        let docRef = db.collection("Users").document(userID)
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                
+                let data = document.data()
+                self.name = data?["Name and Surname"] as! String
+                print(name)
+            } else {
+                print("Document does not exist")
+            }
+        }
+        
+    }
+    
 }
 
-struct SettingsUser_Previews: PreviewProvider {
+
+/*struct SettingsUser_Previews: PreviewProvider {
     static var previews: some View {
         SettingsUser()
     }
 }
+*/
+
+
+
+
+
