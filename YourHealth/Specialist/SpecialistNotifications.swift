@@ -54,7 +54,6 @@ struct BasicSpecialist2: View {
             Image(specialist.image)
                 .resizable()
                 .frame(width: 50, height: 50)
-                .cornerRadius(25)
             
             VStack (alignment: .leading){
                 Text(specialist.name)
