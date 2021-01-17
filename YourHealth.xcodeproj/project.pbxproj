@@ -15,6 +15,10 @@
 		6A733A6D25AF036300982BBA /* appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A733A6C25AF036300982BBA /* appointment.swift */; };
 		6A733A8925AF15D800982BBA /* appointmentuser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A733A8825AF15D800982BBA /* appointmentuser.swift */; };
 		6A982C1D259BD655005D707B /* mainview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A982C1C259BD655005D707B /* mainview.swift */; };
+		7B192D4525B310B400425FD4 /* UserNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B192D4425B310B400425FD4 /* UserNotifications.swift */; };
+		7B192D4825B3116300425FD4 /* UserChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B192D4725B3116300425FD4 /* UserChatView.swift */; };
+		7B192D4B25B3148F00425FD4 /* SpecialistRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B192D4A25B3148F00425FD4 /* SpecialistRequestView.swift */; };
+		7B192D4E25B43A8100425FD4 /* SpecialistRequestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B192D4D25B43A8100425FD4 /* SpecialistRequestListView.swift */; };
 		7B36534025ADAC0F00F33B7B /* OurSpecialistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B36533F25ADAC0F00F33B7B /* OurSpecialistsView.swift */; };
 		7B36537525ADD89D00F33B7B /* SurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B36537425ADD89D00F33B7B /* SurveyView.swift */; };
 		7B36539025B1A1D500F33B7B /* SpecialistNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B36538F25B1A1D500F33B7B /* SpecialistNotifications.swift */; };
@@ -25,6 +29,7 @@
 		7B642F1A25AC5DD4009F3171 /* UserDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B642F1925AC5DD4009F3171 /* UserDashboard.swift */; };
 		7B9BF6392598A69800C55398 /* JoinCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9BF6382598A69800C55398 /* JoinCenterView.swift */; };
 		7B9BF647259B4E1D00C55398 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9BF646259B4E1D00C55398 /* Types.swift */; };
+		7B9CD13D25B2F33200E20A01 /* SpecialistChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9CD13C25B2F33200E20A01 /* SpecialistChatView.swift */; };
 		7BCC473C2591F039001AB0E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCC473B2591F039001AB0E3 /* AppDelegate.swift */; };
 		7BCC473E2591F039001AB0E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCC473D2591F039001AB0E3 /* SceneDelegate.swift */; };
 		7BCC47402591F039001AB0E3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCC473F2591F039001AB0E3 /* ContentView.swift */; };
@@ -43,6 +48,10 @@
 		6A733A6C25AF036300982BBA /* appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appointment.swift; sourceTree = "<group>"; };
 		6A733A8825AF15D800982BBA /* appointmentuser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appointmentuser.swift; sourceTree = "<group>"; };
 		6A982C1C259BD655005D707B /* mainview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainview.swift; sourceTree = "<group>"; };
+		7B192D4425B310B400425FD4 /* UserNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotifications.swift; sourceTree = "<group>"; };
+		7B192D4725B3116300425FD4 /* UserChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChatView.swift; sourceTree = "<group>"; };
+		7B192D4A25B3148F00425FD4 /* SpecialistRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialistRequestView.swift; sourceTree = "<group>"; };
+		7B192D4D25B43A8100425FD4 /* SpecialistRequestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialistRequestListView.swift; sourceTree = "<group>"; };
 		7B36533F25ADAC0F00F33B7B /* OurSpecialistsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurSpecialistsView.swift; sourceTree = "<group>"; };
 		7B36537425ADD89D00F33B7B /* SurveyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyView.swift; sourceTree = "<group>"; };
 		7B36538F25B1A1D500F33B7B /* SpecialistNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialistNotifications.swift; sourceTree = "<group>"; };
@@ -53,6 +62,7 @@
 		7B642F1925AC5DD4009F3171 /* UserDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDashboard.swift; sourceTree = "<group>"; };
 		7B9BF6382598A69800C55398 /* JoinCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinCenterView.swift; sourceTree = "<group>"; };
 		7B9BF646259B4E1D00C55398 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		7B9CD13C25B2F33200E20A01 /* SpecialistChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialistChatView.swift; sourceTree = "<group>"; };
 		7BCC47382591F039001AB0E3 /* YourHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BCC473B2591F039001AB0E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BCC473D2591F039001AB0E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +107,8 @@
 				7B36533F25ADAC0F00F33B7B /* OurSpecialistsView.swift */,
 				7B36537425ADD89D00F33B7B /* SurveyView.swift */,
 				6A733A8825AF15D800982BBA /* appointmentuser.swift */,
+				7B192D4425B310B400425FD4 /* UserNotifications.swift */,
+				7B192D4725B3116300425FD4 /* UserChatView.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -111,6 +123,9 @@
 				1018992525A5F5FE0007F314 /* Settings.swift */,
 				6A733A6C25AF036300982BBA /* appointment.swift */,
 				7B36538F25B1A1D500F33B7B /* SpecialistNotifications.swift */,
+				7B9CD13C25B2F33200E20A01 /* SpecialistChatView.swift */,
+				7B192D4A25B3148F00425FD4 /* SpecialistRequestView.swift */,
+				7B192D4D25B43A8100425FD4 /* SpecialistRequestListView.swift */,
 			);
 			path = Specialist;
 			sourceTree = "<group>";
@@ -293,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A733A8925AF15D800982BBA /* appointmentuser.swift in Sources */,
+				7B192D4E25B43A8100425FD4 /* SpecialistRequestListView.swift in Sources */,
 				7BCC47432591F039001AB0E3 /* YourHealth.xcdatamodeld in Sources */,
 				7B642DB925A8570C009F3171 /* CreateNewCenter.swift in Sources */,
 				7B642F1625AC59B8009F3171 /* UserLogin.swift in Sources */,
@@ -304,10 +320,14 @@
 				7B642D3025A73180009F3171 /* Login.swift in Sources */,
 				1018992625A5F5FE0007F314 /* Settings.swift in Sources */,
 				1018992325A5E0260007F314 /* ListaSpecialisti.swift in Sources */,
+				7B9CD13D25B2F33200E20A01 /* SpecialistChatView.swift in Sources */,
 				7B642F1225AC57D0009F3171 /* UserContentView.swift in Sources */,
 				7BCC473E2591F039001AB0E3 /* SceneDelegate.swift in Sources */,
 				7B9BF6392598A69800C55398 /* JoinCenterView.swift in Sources */,
 				7B642F1A25AC5DD4009F3171 /* UserDashboard.swift in Sources */,
+				7B192D4825B3116300425FD4 /* UserChatView.swift in Sources */,
+				7B192D4525B310B400425FD4 /* UserNotifications.swift in Sources */,
+				7B192D4B25B3148F00425FD4 /* SpecialistRequestView.swift in Sources */,
 				7B36534025ADAC0F00F33B7B /* OurSpecialistsView.swift in Sources */,
 				7BCC47402591F039001AB0E3 /* ContentView.swift in Sources */,
 				7B36537525ADD89D00F33B7B /* SurveyView.swift in Sources */,

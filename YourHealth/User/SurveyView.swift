@@ -59,9 +59,9 @@ struct SurveyView: View {
                                 .foregroundColor(.black)
                                 .padding(.leading, 5))
                     {
-                        Picker(selection: $selectedStatusesIndex, label: Text("Themes")) {
-                            ForEach(0 ..< statuses.count) {
-                                Text(self.statuses[$0])
+                        Picker(selection: $selectedThemesIndex, label: Text("Themes")) {
+                            ForEach(0 ..< themes.count) {
+                                Text(self.themes[$0])
                             }
                         }
                     }
@@ -82,9 +82,9 @@ struct SurveyView: View {
                                 .foregroundColor(.black)
                                 .padding(.leading, 5))
                     {
-                        Picker(selection: $selectedThemesIndex, label: Text("Status")) {
-                            ForEach(0 ..< themes.count) {
-                                Text(self.themes[$0])
+                        Picker(selection: $selectedStatusesIndex, label: Text("Status")) {
+                            ForEach(0 ..< statuses.count) {
+                                Text(self.statuses[$0])
                             }
                         }
                     }
@@ -165,7 +165,7 @@ struct SurveySendView: View {
                 .resizable()
                 .scaledToFill()
                 .frame(width: 600.0, height: 250.0)
-                .padding(.top, 150)
+                .padding(.top, 100)
                 .padding(.trailing, 50)
             
             VStack{
@@ -189,7 +189,7 @@ struct SurveySendView: View {
                     
                 }
                 .frame(minWidth: 0, maxWidth: 300)
-                .padding(.top, 100.0)
+                .padding(.top, 50.0)
                 
                     Spacer()
                             
