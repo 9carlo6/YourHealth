@@ -376,10 +376,12 @@ struct UserSignUp : View {
                           self.register()
                       }) {
                           
-                          Text("Register")
-                              .foregroundColor(.black)
-                              .padding(.vertical)
-                              .frame(width: UIScreen.main.bounds.width - 50)
+                        Text("Register")
+                          .fontWeight(.semibold)
+                          .font(.title)
+                          .foregroundColor(.black)
+                          .padding(.vertical)
+                          .frame(width: UIScreen.main.bounds.width - 50)
                       }
                       .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 40)
                       .padding()

@@ -57,15 +57,18 @@ struct OurSpecialistsView: View {
                     Text("Discover the specialists who work at this center")
                         .padding(.leading, 20)
                         .foregroundColor(.secondary)
-                        .padding(.bottom, 10)
+                        .padding(.bottom, 20)
                         
                 
                     List(){
                         ForEach(specialists){ specialist in
                             
                                 VStack(alignment: .leading){
+                                    HStack{
+                                        Text(" ")
+                                        BasicSpecialist(specialist: specialist)
+                                    }
                                     
-                                    BasicSpecialist(specialist: specialist)
                                     
                                         
                                     NavigationLink(destination: ProfileSpecialist(specialist: specialist)){
@@ -84,7 +87,6 @@ struct OurSpecialistsView: View {
                                 
                                 .background(navColor.edgesIgnoringSafeArea(.all))
                                 
-                                .padding(.leading, 5)
                                 
                         }
                         
