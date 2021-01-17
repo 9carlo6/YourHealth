@@ -1,17 +1,17 @@
 //
-//  SpecialistNotifications.swift
+//  UserNotifications.swift
 //  YourHealth
 //
-//  Created by pannullocarlo on 15/01/2021.
+//  Created by pannullocarlo on 16/01/2021.
 //
 
 import SwiftUI
 
-struct SpecialistNotifications: View {
+struct UserNotifications: View {
     
     @Environment(\.presentationMode) var presentationMode
     
-    var specialists = [Specialist(image: "logo", name: "YourHealth", role: "You have a new request from..."), Specialist(image: "giovanni", name: "Giovanni Muciaccia", role: "Call me to book an appointment...")
+    var specialists = [Specialist(image: "dottoressa1", name: "Giulia Giordano", role: "Call me to book an appointment...")
     ]
     
     @State private var selectedOrder = 0
@@ -24,8 +24,8 @@ struct SpecialistNotifications: View {
                     List(){
                         ForEach(specialists){ specialist in
                                 VStack(alignment: .leading){
-                                    BasicSpecialist2(specialist: specialist)
-                                    NavigationLink(destination: SpecialistChatView()){
+                                    BasicSpecialist3(specialist: specialist)
+                                    NavigationLink(destination: UserChatView()){
                                         EmptyView()
                                     }
                                     .frame(width: 0)
@@ -45,7 +45,7 @@ struct SpecialistNotifications: View {
     
 }
 
-struct BasicSpecialist2: View {
+struct BasicSpecialist3: View {
     var specialist: Specialist
     
     var body: some View {
@@ -64,12 +64,12 @@ struct BasicSpecialist2: View {
                 .resizable()
                 .scaledToFill()
                 .frame(width: 40, height: 40)
-        }  
+        }
     }
 }
 
-struct SpecialistNotifications_Previews: PreviewProvider {
+struct UserNotifications_Previews: PreviewProvider {
     static var previews: some View {
-        SpecialistNotifications()
+        UserNotifications()
     }
 }

@@ -106,11 +106,14 @@ struct UserLogin2 : View {
                           .foregroundColor(self.color)
                           .padding(.top, 35)
                       
-                      TextField("Email", text: self.$email)
-                      .autocapitalization(.none)
-                      .padding()
-                      .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color("Color") : self.color,lineWidth: 2))
-                      .padding(.top, 25)
+                    HStack(spacing: 15){
+                        TextField("Email", text: self.$email)
+                    }
+                    .autocapitalization(.none)
+                    .padding()
+                        .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
+                      .cornerRadius(15)
+                        .padding(.top, 25)
                       
                       HStack(spacing: 15){
                           
@@ -140,7 +143,8 @@ struct UserLogin2 : View {
                           
                       }
                       .padding()
-                      .background(RoundedRectangle(cornerRadius: 4).stroke(self.pass != "" ? Color("Color") : self.color,lineWidth: 2))
+                      .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
+                      .cornerRadius(15)
                       .padding(.top, 25)
                       
                       HStack{
@@ -183,6 +187,7 @@ struct UserLogin2 : View {
                       
                   }
                   .padding(.horizontal, 25)
+                  .padding(.top, 100)
               }
               
               Button(action: {

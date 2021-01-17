@@ -11,6 +11,35 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
   
 struct Login: View {
+    
+    init(){
+        let navBarAppearance = UINavigationBarAppearance()
+        
+        navBarAppearance.backgroundColor = UIColor.init(Color("LightPink"))
+        
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont(name: "ArialRoundedMTBold", size: 35)!]
+        
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont(name: "ArialRoundedMTBold", size: 20)!]
+        
+        UINavigationBar.appearance().standardAppearance = navBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
+        UINavigationBar.appearance().compactAppearance = navBarAppearance
+        
+        //Cambio della freccia
+        navBarAppearance.setBackIndicatorImage(UIImage(systemName: "arrow.turn.up.left"), transitionMaskImage: UIImage(systemName: "arrow.turn.up.left"))
+        
+        UINavigationBar.appearance().tintColor = UIColor.black
+        
+        
+        //Rimuove la linea nella NavigationBar
+        navBarAppearance.configureWithTransparentBackground()
+        
+        
+        //
+        UITableView.appearance().backgroundColor = .clear
+        
+    }
+    
   var body: some View {
       
       Home()
@@ -105,11 +134,14 @@ struct Login2 : View {
                           .foregroundColor(self.color)
                           .padding(.top, 35)
                       
-                      TextField("Email", text: self.$email)
-                      .autocapitalization(.none)
-                      .padding()
-                      .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color("Color") : self.color,lineWidth: 2))
-                      .padding(.top, 25)
+                    HStack(spacing: 15){
+                        TextField("Email", text: self.$email)
+                    }
+                    .autocapitalization(.none)
+                    .padding()
+                        .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
+                      .cornerRadius(15)
+                        .padding(.top, 25)
                       
                       HStack(spacing: 15){
                           
@@ -139,7 +171,8 @@ struct Login2 : View {
                           
                       }
                       .padding()
-                      .background(RoundedRectangle(cornerRadius: 4).stroke(self.pass != "" ? Color("Color") : self.color,lineWidth: 2))
+                      .background(LinearGradient(gradient: Gradient(colors: [Color("Darkpink"), Color("Lightpink")]), startPoint: .leading, endPoint: .trailing))
+                      .cornerRadius(15)
                       .padding(.top, 25)
                       
                       HStack{
@@ -182,6 +215,7 @@ struct Login2 : View {
                       
                   }
                   .padding(.horizontal, 25)
+                  .padding(.top, 100)
               }
               
               Button(action: {
@@ -275,11 +309,12 @@ struct SignUp : View {
   @State var tabColor: UIColor = UIColor.init(red: 255/255, green: 226/255, blue: 226/255,alpha: 0.0)
   //colore per la navigation view
   @State var navColor: Color = Color.init(red: 255/255, green: 240/255, blue: 240/255)
+    
   
   var body: some View{
-   
       ZStack{
         navColor.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        
           ZStack(alignment: .topLeading) {
               
               GeometryReader{_ in
@@ -397,9 +432,11 @@ struct SignUp : View {
                       }) {
                           
                           Text("Register")
-                              .foregroundColor(.black)
-                              .padding(.vertical)
-                              .frame(width: UIScreen.main.bounds.width - 50)
+                            .fontWeight(.semibold)
+                            .font(.title)
+                            .foregroundColor(.black)
+                            .padding(.vertical)
+                            .frame(width: UIScreen.main.bounds.width - 50)
                       }
                       .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 40)
                       .padding()
@@ -430,7 +467,7 @@ struct SignUp : View {
               ErrorView(alert: self.$alert, error: self.$error)
           }
         }
-      }
+      }.padding(.top, -100)
     
   }
   
