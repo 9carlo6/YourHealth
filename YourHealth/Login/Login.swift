@@ -419,7 +419,7 @@ struct SignUp : View {
                     .background(RoundedRectangle(cornerRadius: 4).stroke(self.profession != "" ? Color("Color") : self.color,lineWidth: 2))
                     .padding(.top, 25)
                         
-                    TextField("Aldo Code", text: self.$alboid)
+                    TextField("Albo Code", text: self.$alboid)
                         .autocapitalization(.none)
                         .padding()
                         .background(RoundedRectangle(cornerRadius: 4).stroke(self.alboid != "" ? Color("Color") : self.color,lineWidth: 2))
