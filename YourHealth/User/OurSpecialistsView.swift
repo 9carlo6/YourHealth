@@ -144,7 +144,7 @@ struct ProfileSpecialist: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 150, alignment: .center)
-                    .clipShape(Circle())
+                    //.clipShape(Circle())
                     .padding()
                         
                     
@@ -193,7 +193,7 @@ struct BasicSpecialist: View {
                     Image(specialist.image)
                         .resizable()
                         .frame(width: 50, height: 50)
-                        .cornerRadius(25)
+                        //.cornerRadius(25)
                         
                     
                     VStack (alignment: .leading){
