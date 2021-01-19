@@ -19,6 +19,7 @@
 		7B192D4825B3116300425FD4 /* UserChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B192D4725B3116300425FD4 /* UserChatView.swift */; };
 		7B192D4B25B3148F00425FD4 /* SpecialistRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B192D4A25B3148F00425FD4 /* SpecialistRequestView.swift */; };
 		7B192D4E25B43A8100425FD4 /* SpecialistRequestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B192D4D25B43A8100425FD4 /* SpecialistRequestListView.swift */; };
+		7B192D5125B4925A00425FD4 /* UserListaSpecialisti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B192D5025B4925A00425FD4 /* UserListaSpecialisti.swift */; };
 		7B36534025ADAC0F00F33B7B /* OurSpecialistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B36533F25ADAC0F00F33B7B /* OurSpecialistsView.swift */; };
 		7B36537525ADD89D00F33B7B /* SurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B36537425ADD89D00F33B7B /* SurveyView.swift */; };
 		7B36539025B1A1D500F33B7B /* SpecialistNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B36538F25B1A1D500F33B7B /* SpecialistNotifications.swift */; };
@@ -52,6 +53,7 @@
 		7B192D4725B3116300425FD4 /* UserChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChatView.swift; sourceTree = "<group>"; };
 		7B192D4A25B3148F00425FD4 /* SpecialistRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialistRequestView.swift; sourceTree = "<group>"; };
 		7B192D4D25B43A8100425FD4 /* SpecialistRequestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialistRequestListView.swift; sourceTree = "<group>"; };
+		7B192D5025B4925A00425FD4 /* UserListaSpecialisti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListaSpecialisti.swift; sourceTree = "<group>"; };
 		7B36533F25ADAC0F00F33B7B /* OurSpecialistsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurSpecialistsView.swift; sourceTree = "<group>"; };
 		7B36537425ADD89D00F33B7B /* SurveyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyView.swift; sourceTree = "<group>"; };
 		7B36538F25B1A1D500F33B7B /* SpecialistNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialistNotifications.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				6A733A8825AF15D800982BBA /* appointmentuser.swift */,
 				7B192D4425B310B400425FD4 /* UserNotifications.swift */,
 				7B192D4725B3116300425FD4 /* UserChatView.swift */,
+				7B192D5025B4925A00425FD4 /* UserListaSpecialisti.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				10189A1E25ABA2450007F314 /* SettingsUser.swift in Sources */,
 				6A982C1D259BD655005D707B /* mainview.swift in Sources */,
 				7B36539025B1A1D500F33B7B /* SpecialistNotifications.swift in Sources */,
+				7B192D5125B4925A00425FD4 /* UserListaSpecialisti.swift in Sources */,
 				7B9BF647259B4E1D00C55398 /* Types.swift in Sources */,
 				7B642D3025A73180009F3171 /* Login.swift in Sources */,
 				1018992625A5F5FE0007F314 /* Settings.swift in Sources */,

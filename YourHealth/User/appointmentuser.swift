@@ -135,7 +135,7 @@ struct CardView: View {
                     .font(.title3)
                 Text(status)
                  .font(.title3)
-            }.padding(.trailing, 100)
+            }.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
             
         }
         

@@ -114,7 +114,7 @@ struct UserContentView: View {
             //della navigation view Specialists
             NavigationView{
                 ZStack{
-                    ListaSpecialisti()
+                    UserListaSpecialisti()
                 }
                 .navigationBarTitle("")
                 .navigationBarItems(leading: Text("Specialists")
